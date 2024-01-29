@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 01/29/2024 11:53:48 AM
+-- Create Date: 01/29/2024 03:15:52 PM
 -- Design Name: 
 -- Module Name: ROM - Behavioral
 -- Project Name: 
@@ -51,7 +51,7 @@ begin
 	   
         begin
         case address_input is
-            when "0000" => rom_output_next <= "00000110010110";
+            when "0000" => rom_output_next <= "00000110010110"; --Add our inputs
             when "0001" => rom_output_next <= "00010110000001";
             when "0010" => rom_output_next <= "00010000000011";
             when "0011" => rom_output_next <= "00000010000010";

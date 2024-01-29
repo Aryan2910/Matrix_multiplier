@@ -70,19 +70,19 @@ signal s_reg3 : std_logic_vector (63 downto 0);
 signal s_reg3_next : std_logic_vector (63 downto 0);
 signal s_reg4 : std_logic_vector (63 downto 0);    
 signal s_reg4_next : std_logic_vector (63 downto 0);
-signal address : std_logic_vector(3 downto 0);
+signal address_input : std_logic_vector(3 downto 0);
 signal dataRom_output : std_logic_vector (13 downto 0);
 --one bit signal
 signal mul_en : std_logic;    
 --states
-type state_type is (s_reg_1_state, s_reg_2_state, s_reg_3_state, s_reg_4_state);
+type state_type is (state_idle, state_shifting, state_multiply, state_load);
 signal state_reg, state_next : state_type;
 
 --ROM Component:
 component ROM
    port(
         clk : in std_logic;
-        address : in std_logic_vector (3 downto 0);
+        address_input : in std_logic_vector (3 downto 0);
         dataRom_output : out std_logic_vector (13 downto 0)
         );
 end component;
@@ -100,7 +100,7 @@ Sequential: process(clk, reset)
                     count_col <= (others => '0');
                     shift_count <= (others => '0');
                     count <= (others => '0');
-                    state_reg <= s_reg_1_state;
+                    state_reg <= state_idle;
                else
                     mat_coeff_1 <= mat_coeff_1_next;
                     mat_coeff_2 <= mat_coeff_2_next;
@@ -116,7 +116,7 @@ end process;
 --Port maps
     rom_use : ROM
     port map ( clk => clk,
-               address => address,
+               address_input => address_input,
                dataRom_output => dataRom_output
     );
   
@@ -133,12 +133,18 @@ begin
             
             
             
-            --Shifting FSM
+            --FSM
             case state_reg is 
-                when s_reg_1_state =>
+                when state_idle =>
+                    if valid = '1' then 
+                    
+                    else
+                    
+                    end if;
+                when state_shifting =>
                     if shift_count = "00" then
-                        shift_count_next <= shift_count + 1;
-                        count_next <= count + 1;
+                       --shift_count_next <= shift_count + 1;
+                       -- count_next <= count + 1;
                         s_reg1_next <= s_reg1(55 downto 0) & input; 
                         state_next <= s_reg_2_state;
                      else
@@ -185,6 +191,8 @@ begin
                         state_next <= s_reg_4_state;   
                     end if;           
             end case;     
-end process;  
+end process;
+
+  
             
 end Behavioral;
