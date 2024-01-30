@@ -73,7 +73,8 @@ signal s_reg4_next : std_logic_vector (63 downto 0);
 signal address_input : std_logic_vector(3 downto 0);
 signal dataRom_output : std_logic_vector (13 downto 0);
 --one bit signal
-signal mul_en : std_logic;    
+signal mul_en : std_logic;
+signal ready : std_logic;      
 --states
 type state_type is (state_idle, state_shifting, state_multiply, state_load);
 signal state_reg, state_next : state_type;
@@ -136,60 +137,40 @@ begin
             --FSM
             case state_reg is 
                 when state_idle =>
+                ready <= '1';
+                mat_coeff_1 <= dataRom_output(6 downto 0); 
+                mat_coeff_2 <= dataRom_output(13 downto 7); 
+                count_mul <= (others => '0');
+                count_col <= (others => '0');
+                --Should we add MU1-4??
                     if valid = '1' then 
-                    
+                    state_next <= state_shifting;
                     else
-                    
+                    --ram???
                     end if;
                 when state_shifting =>
                     if shift_count = "00" then
-                       --shift_count_next <= shift_count + 1;
-                       -- count_next <= count + 1;
-                        s_reg1_next <= s_reg1(55 downto 0) & input; 
-                        state_next <= s_reg_2_state;
-                     else
-                        shift_count_next <= shift_count;
-                        count_next <= count;
-                        state_next <= s_reg_1_state;   
-                    end if;
-                when s_reg_2_state =>
-                     if shift_count = "01" then
-                        shift_count_next <= shift_count + 1;
                         count_next <= count + 1;
-                        s_reg2_next <= s_reg2(55 downto 0) & input; 
-                        state_next <= s_reg_3_state;
-                     else
-                        shift_count_next <= shift_count;
-                        count_next <= count;
-                        state_next <= s_reg_2_state;   
-                    end if;
-                when s_reg_3_state =>
-                     if shift_count = "10" then
-                        shift_count_next <= shift_count + 1;
+                        s_reg1_next <= s_reg1(55 downto 0) & input;    
+                     elsif shift_count = "01" then
                         count_next <= count + 1;
-                        s_reg3_next <= s_reg3(55 downto 0) & input; 
-                        state_next <= s_reg_4_state;
-                     else
-                        shift_count_next <= shift_count;
-                        count_next <= count;
-                        state_next <= s_reg_3_state;   
-                    end if;
-                 
-                 when s_reg_4_state =>
-                     if shift_count = "11" then
+                        s_reg2_next <= s_reg2(55 downto 0) & input;
+                     elsif shift_count = "10" then
+                        count_next <= count + 1;
+                        s_reg3_next <= s_reg3(55 downto 0) & input;
+                     elsif shift_count = "11" then
+                        count_next <= count + 1;
+                        s_reg4_next <= s_reg4(55 downto 0) & input;
+                     else 
                         if count = "100000" then
-                            mul_en <= '1';         --Enable multiply stage
-                        else    
+                        state_next <= state_multiply;
+                        else
                         shift_count_next <= shift_count + 1;
-                        count_next <= count + 1;
-                        s_reg3_next <= s_reg3(55 downto 0) & input; 
-                        state_next <= s_reg_1_state;
                         end if;
-                     else
-                        shift_count_next <= shift_count;
-                        count_next <= count;
-                        state_next <= s_reg_4_state;   
-                    end if;           
+                  end if;
+                       
+                 when state_multiply =>
+                    
             end case;     
 end process;
 
