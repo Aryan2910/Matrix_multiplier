@@ -40,7 +40,7 @@ entity Controller is
            MU1_out : out std_logic_vector (14 downto 0);
            MU2_out : out std_logic_vector (14 downto 0);
            MU3_out : out std_logic_vector (14 downto 0);
-           MU4out : out std_logic_vector (14 downto 0)
+           MU4_out : out std_logic_vector (14 downto 0)
 
            
            
@@ -73,13 +73,16 @@ signal s_reg4_next : std_logic_vector (63 downto 0);
 signal address_input : std_logic_vector(3 downto 0);
 signal dataRom_output : std_logic_vector (13 downto 0);
 --one bit signal
-signal mul_en : std_logic;
+signal mu_en : std_logic;
 signal ready : std_logic;      
+signal clear : std_logic;      
 --states
 type state_type is (state_idle, state_shifting, state_multiply, state_load);
 signal state_reg, state_next : state_type;
 
---ROM Component:
+--Components:
+
+--ROM
 component ROM
    port(
         clk : in std_logic;
@@ -88,6 +91,26 @@ component ROM
         );
 end component;
 
+--Multiply signal
+component Multiplier_unit
+    port (
+           clk : in std_logic;
+           clear : in std_logic;
+           --Register inputs
+           s_reg1 : in std_logic_vector (63 downto 0);
+           s_reg2 : in std_logic_vector (63 downto 0);
+           s_reg3 : in std_logic_vector (63 downto 0);
+           s_reg4: in std_logic_vector (63 downto 0);
+           mu_en : in std_logic;
+           dataROM : in std_logic_vector (13 downto 0);
+           --outputs
+           MU_1_out : out std_logic_vector (14 downto 0);
+           MU_2_out : out std_logic_vector (14 downto 0);
+           MU_3_out : out std_logic_vector (14 downto 0);
+           MU_4_out : out std_logic_vector (14 downto 0)
+        
+    );
+    end component;
 begin
 
 Sequential: process(clk, reset)
@@ -119,6 +142,24 @@ end process;
     port map ( clk => clk,
                address_input => address_input,
                dataRom_output => dataRom_output
+    );
+    
+    multiply_unit_use : Multiplier_unit
+    port map (            
+           clk => clk,
+           clear => clear,
+           --Register inputs
+           s_reg1 => s_reg1, 
+           s_reg2 => s_reg2,
+           s_reg3 => s_reg3,
+           s_reg4 => s_reg4,
+           mu_en => mu_en,
+           dataROM => dataRom_output,
+           --outputs
+           MU_1_out => MU1_out,
+           MU_2_out => MU2_out,
+           MU_3_out => MU3_out,
+           MU_4_out => MU4_out
     );
   
 Shifting: process(shift_count,state_reg,s_reg1,s_reg2,s_reg3,s_reg4,count)
@@ -169,8 +210,9 @@ begin
                         end if;
                   end if;
                        
-                 when state_multiply =>
-                    
+             when state_multiply =>
+             
+             when state_load =>       
             end case;     
 end process;
 

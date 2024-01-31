@@ -1,6 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use ieee.std_logic_arith.all;
+use ieee. numeric_std.all;
 use ieee.std_logic_unsigned.all;
 
 entity Multiplier_unit is
@@ -30,10 +31,12 @@ signal mu3, mu3_next : std_logic_vector (14 downto 0);
 signal mu4, mu4_next : std_logic_vector (14 downto 0);
 signal coeff, coeff_next : std_logic_vector (6 downto 0);
 signal address, next_address : std_logic_vector (3 downto 0);
+signal sig_sreg1_next, sig_sreg2_next, sig_sreg3_next, sig_sreg4_next : std_logic_vector (63 downto 0);
+signal sig_sreg1, sig_sreg2, sig_sreg3, sig_sreg4 : std_logic_vector (63 downto 0);
 --Count
 signal count_mul, count_mul_next : std_logic_vector (3 downto 0);
 --state
-type state_type is (select_coeff, multiply, shift);
+type state_type is (select_coeff, multiply, state_shift);
 signal state_reg, state_next : state_type;
 BEGIN
 
@@ -46,12 +49,20 @@ sequential: process (clk,clear) begin
             mu4 <= (others => '0');
             count_mul <= (others => '0');
             coeff <= (others => '0');
+--            sig_sreg1 <= (others => '0');
+--            sig_sreg2 <= (others => '0');
+--            sig_sreg3 <= (others => '0');
+--            sig_sreg4 <= (others => '0');
             state_reg <= select_coeff;   
             else
             mu1 <= mu1_next;
             mu2 <= mu1_next;
             mu3 <= mu1_next;
             mu4 <= mu1_next;
+--            sig_sreg1 <= sig_sreg1_next;
+--            sig_sreg2 <= sig_sreg2_next;
+--            sig_sreg3 <= sig_sreg3_next;
+--            sig_sreg4 <= sig_sreg4_next;
             count_mul <= count_mul_next;
             coeff <= coeff_next;
             state_reg <= state_next;
@@ -59,7 +70,12 @@ sequential: process (clk,clear) begin
     end if;
 end process;
 
-combinational: process (mu_en) begin
+sig_sreg1 <= s_reg1 (63 downto 0);
+sig_sreg2 <= s_reg2 (63 downto 0);
+sig_sreg3 <= s_reg3 (63 downto 0);
+sig_sreg4 <= s_reg4 (63 downto 0);
+
+combinational: process (mu_en,state_reg, state_next, mu1,mu2,mu3,mu4, count_mul, address) begin
 mu1_next <= mu1;
 mu2_next <= mu2;
 mu3_next <= mu3;
@@ -67,26 +83,44 @@ mu4_next <= mu4;
 count_mul_next <= count_mul;
 
 
+
+coeff_next <= coeff;
+state_next <= state_reg;
     if mu_en = '1' then 
         case state_reg is
             when select_coeff =>
                 if count_mul(0) = '1' then
-                    coeff <= dataRom(13 downto 0);
+                    coeff_next <= dataRom(13 downto 7);
                     next_address <= address + 1;
+                    state_next <= multiply;
+                    
                 else
-                    coeff <= dataRom(6 downto 0);
+                    coeff_next <= dataRom(6 downto 0);
                     next_address <= address + 1;
+
+                    state_next <= multiply;
                 end if;
-                state_next <= multiply;
-            when multiply =>
-                mu1_next <= coeff * s_reg1(63 downto 56) + mu1;
-                mu2_next <= coeff * s_reg2(63 downto 56) + mu2;
-                mu3_next <= coeff * s_reg3(63 downto 56) + mu3;
-                mu4_next <= coeff * s_reg4(63 downto 56) + mu4;
-                state_next <= shift;
-            when shift =>
-                -- we will have to somehow shift the MSB to the start of the s_reg register..should we create a new register? 
                 
+            when multiply =>
+                mu1_next <= (coeff_next * sig_sreg1(63 downto 56)) + mu1;
+                mu2_next <= (coeff_next * sig_sreg2(63 downto 56)) + mu2;
+                mu3_next <= (coeff_next * sig_sreg3(63 downto 56)) + mu3;
+                mu4_next <= (coeff_next * sig_sreg4(63 downto 56)) + mu4;
+                count_mul_next <= count_mul + 1;
+                state_next <= state_shift;
+                
+                
+            when state_shift =>
+                -- we will have to somehow shift the MSB to the start of the s_reg register..should we create a new register? 
+                sig_sreg1_next <= sig_sreg1(55 downto 0) & sig_sreg1(63 downto 56);
+                --sig_sreg1 <= sig_sreg1_next;
+                sig_sreg2_next <= sig_sreg2(55 downto 0) & sig_sreg2(63 downto 56);
+                --sig_sreg2 <= sig_sreg2_next;
+                sig_sreg3_next <= s_reg3(55 downto 0) & s_reg3(63 downto 56);
+                --sig_sreg3 <= sig_sreg3_next;
+                sig_sreg4_next <= s_reg4(55 downto 0) & s_reg4(63 downto 56);
+                --sig_sreg4 <= sig_sreg4_next;
+                state_next <= select_coeff;
         end case;
     end if;    
 end process;
