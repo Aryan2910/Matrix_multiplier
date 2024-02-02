@@ -19,7 +19,8 @@ entity Multiplier_unit is
            MU_1_out : out std_logic_vector (14 downto 0);
            MU_2_out : out std_logic_vector (14 downto 0);
            MU_3_out : out std_logic_vector (14 downto 0);
-           MU_4_out : out std_logic_vector (14 downto 0)
+           MU_4_out : out std_logic_vector (14 downto 0);
+           load : out std_logic
            );
 end Multiplier_unit;
 
@@ -34,9 +35,11 @@ signal address, next_address : std_logic_vector (3 downto 0);
 signal sig_sreg1_next, sig_sreg2_next, sig_sreg3_next, sig_sreg4_next : std_logic_vector (63 downto 0);
 signal sig_sreg1, sig_sreg2, sig_sreg3, sig_sreg4 : std_logic_vector (63 downto 0);
 --Count
-signal count_mul, count_mul_next : std_logic_vector (3 downto 0);
+signal count_mul, count_mul_next: std_logic_vector (3 downto 0);
+--One bit signal
+signal load_next : std_logic;
 --state
-type state_type is (select_coeff, multiply, state_shift);
+type state_type is (state_load, select_coeff, multiply, state_shift);
 signal state_reg, state_next : state_type;
 BEGIN
 
@@ -46,48 +49,56 @@ sequential: process (clk,clear) begin
             mu1 <= (others => '0');
             mu2 <= (others => '0');
             mu3 <= (others => '0');
-            mu4 <= (others => '0');
-            count_mul <= (others => '0');
+            mu4 <= (others => '0');           
             coeff <= (others => '0');
---            sig_sreg1 <= (others => '0');
---            sig_sreg2 <= (others => '0');
---            sig_sreg3 <= (others => '0');
---            sig_sreg4 <= (others => '0');
-            state_reg <= select_coeff;   
+            load <= '0';
+            count_mul <= (others => '0');
+            state_reg <= state_load;
+            address <= (others => '0');   
             else
             mu1 <= mu1_next;
             mu2 <= mu1_next;
             mu3 <= mu1_next;
             mu4 <= mu1_next;
---            sig_sreg1 <= sig_sreg1_next;
---            sig_sreg2 <= sig_sreg2_next;
---            sig_sreg3 <= sig_sreg3_next;
---            sig_sreg4 <= sig_sreg4_next;
             count_mul <= count_mul_next;
             coeff <= coeff_next;
+            load <= load_next;
+            address <= next_address;
             state_reg <= state_next;
         end if;    
     end if;
 end process;
 
-sig_sreg1 <= s_reg1 (63 downto 0);
-sig_sreg2 <= s_reg2 (63 downto 0);
-sig_sreg3 <= s_reg3 (63 downto 0);
-sig_sreg4 <= s_reg4 (63 downto 0);
+----taking input
 
-combinational: process (mu_en,state_reg, state_next, mu1,mu2,mu3,mu4, count_mul, address) begin
+
+
+
+combinational: process (mu_en,state_reg, state_next, count_mul) begin
 mu1_next <= mu1;
 mu2_next <= mu2;
 mu3_next <= mu3;
 mu4_next <= mu4;
 count_mul_next <= count_mul;
-
-
-
-coeff_next <= coeff;
+sig_sreg1 <= sig_sreg1_next;
+sig_sreg2 <= sig_sreg2_next;
+sig_sreg3 <= sig_sreg3_next;
+sig_sreg4 <= sig_sreg4_next;
+next_address <= address;
 state_next <= state_reg;
+coeff_next <= coeff;
     if mu_en = '1' then 
         case state_reg is
+            when state_load =>
+                sig_sreg1 <= s_reg1;
+                sig_sreg1_next <= sig_sreg1;
+                sig_sreg2 <= s_reg2;
+                sig_sreg2_next <= sig_sreg2;
+                sig_sreg3 <= s_reg3;
+                sig_sreg3_next <= sig_sreg3;
+                sig_sreg4 <= s_reg4;
+                sig_sreg4_next <= sig_sreg4;
+                state_next <= select_coeff;
             when select_coeff =>
                 if count_mul(0) = '1' then
                     coeff_next <= dataRom(13 downto 7);
@@ -102,25 +113,29 @@ state_next <= state_reg;
                 end if;
                 
             when multiply =>
-                mu1_next <= (coeff_next * sig_sreg1(63 downto 56)) + mu1;
-                mu2_next <= (coeff_next * sig_sreg2(63 downto 56)) + mu2;
-                mu3_next <= (coeff_next * sig_sreg3(63 downto 56)) + mu3;
-                mu4_next <= (coeff_next * sig_sreg4(63 downto 56)) + mu4;
+                mu1_next <= coeff_next * sig_sreg1(63 downto 56) + mu1;
+                mu2_next <= coeff_next * sig_sreg2(63 downto 56) + mu2;
+                mu3_next <= coeff_next * sig_sreg3(63 downto 56) + mu3;
+                mu4_next <= coeff_next * sig_sreg4(63 downto 56) + mu4;
                 count_mul_next <= count_mul + 1;
                 state_next <= state_shift;
                 
                 
             when state_shift =>
-                -- we will have to somehow shift the MSB to the start of the s_reg register..should we create a new register? 
-                sig_sreg1_next <= sig_sreg1(55 downto 0) & sig_sreg1(63 downto 56);
-                --sig_sreg1 <= sig_sreg1_next;
-                sig_sreg2_next <= sig_sreg2(55 downto 0) & sig_sreg2(63 downto 56);
-                --sig_sreg2 <= sig_sreg2_next;
-                sig_sreg3_next <= s_reg3(55 downto 0) & s_reg3(63 downto 56);
-                --sig_sreg3 <= sig_sreg3_next;
-                sig_sreg4_next <= s_reg4(55 downto 0) & s_reg4(63 downto 56);
-                --sig_sreg4 <= sig_sreg4_next;
-                state_next <= select_coeff;
+                    if count_mul = "111" then 
+                    load_next <= '1';
+                    MU_1_out <= mu1_next;
+                    MU_2_out <= mu2_next;
+                    MU_3_out <= mu3_next;
+                    MU_4_out <= mu4_next;
+                    state_next <= state_shift;
+                    else 
+                    sig_sreg1_next <= sig_sreg1(55 downto 0) & sig_sreg1(63 downto 56);
+                    sig_sreg2_next <= sig_sreg2(55 downto 0) & sig_sreg2(63 downto 56);
+                    sig_sreg3_next <= sig_sreg3(55 downto 0) & sig_sreg3(63 downto 56);
+                    sig_sreg4_next <= sig_sreg4(55 downto 0) & sig_sreg4(63 downto 56);
+                    state_next <= select_coeff;
+                    end if;    
         end case;
     end if;    
 end process;
