@@ -1,0 +1,684 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Sat Feb  3 14:08:06 2024
+# Process ID: 3016
+# Current directory: D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent5756 D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.xpr
+# Log file: D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/vivado.log
+# Journal file: D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier\vivado.jou
+# Running On: Aryan, OS: Windows, CPU Frequency: 3194 MHz, CPU Physical cores: 16, Host memory: 16476 MB
+#-----------------------------------------------------------
+start_gui
+open_project {D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.xpr}
+INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter.
+Current project path is 'D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier'
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:1.6 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kc705/1.6/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.6 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.6/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.7 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.7/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu1500:part0:1.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu1500/1.2/board.xml as part xcku115-flvb2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vc707:part0:1.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vc707/1.4/board.xml as part xc7vx485tffg1761-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vc709:part0:1.8 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vc709/1.8/board.xml as part xc7vx690tffg1761-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:2.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/2.2/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/3.0/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/3.1/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/3.2/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190_newl:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190_newl/production/1.0/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190_newl:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190_newl/production/1.1/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu108:part0:1.6 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu108/1.6/board.xml as part xcvu095-ffva2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu108:part0:1.7 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu108/1.7/board.xml as part xcvu095-ffva2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu110:part0:1.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu110/1.4/board.xml as part xcvu190-flgc2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.0/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.3 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.3/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.4/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu129:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu129/production/1.0/board.xml as part xcvu29p-fsga2577-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu1525:part0:1.3 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu1525/1.3/board.xml as part xcvu9p-fsgd2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/production/1.0/board.xml as part xcve2802-vsvh1760-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_a/1.0/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_a/1.1/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es_revb:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_b/1.0/board.xml as part xcve2802-vsvh1760-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es_revb:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_b/1.1/board.xml as part xcve2802-vsvh1760-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vermeo_t1_mpsoc:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vermeo_t1_mpsoc/1.0/board.xml as part xczu19eg-ffvd1760-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vermeo_t1_rfsoc:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vermeo_t1_rfsoc/1.0/board.xml as part xczu21dr-ffvd1156-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/production/1.0/board.xml as part xcvh1582-vsva3697-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/production/1.1/board.xml as part xcvh1582-vsva3697-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.0/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.1/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:2.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/2.2/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/3.0/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/3.1/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/3.2/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180_newl:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180_newl/production/1.0/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180_newl:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180_newl/production/1.1/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/production/1.0/board.xml as part xcvp1202-vsva2785-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/production/1.1/board.xml as part xcvp1202-vsva2785-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120:part0:1.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/production/1.2/board.xml as part xcvp1202-vsva2785-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk180/production/1.0/board.xml as part xcvp1802-lsvc4072-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk180/production/1.1/board.xml as part xcvp1802-lsvc4072-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zc706:part0:1.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zc706/1.4/board.xml as part xc7z045ffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu102:part0:3.3 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu102/3.3/board.xml as part xczu9eg-ffvb1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu102:part0:3.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu102/3.4/board.xml as part xczu9eg-ffvb1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.2/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.3 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.3/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.4/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu1275:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu1275/1.0/board.xml as part xczu29dr-ffvf1760-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu1285:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu1285/1.0/board.xml as part xczu39dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208:part0:2.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208/production/2.0/board.xml as part xczu48dr-fsvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216:part0:2.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216/production/2.0/board.xml as part xczu49dr-ffvf1760-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2023.2/data/ip'.
+open_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:08 . Memory (MB): peak = 1491.484 ; gain = 283.438
+update_compile_order -fileset sources_1
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+WARNING: [IP_Flow 19-4067] Ignoring invalid widget type specified checkbox.Providing a default widget
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+Command: synth_design -rtl -rtl_skip_mlo -name rtl_1
+Starting synth_design
+Using part: xc7k70tfbv676-1
+Top: Controller
+INFO: [Device 21-403] Loading part xc7k70tfbv676-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 18624
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2354.289 ; gain = 432.477
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'Controller' [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:51]
+INFO: [Synth 8-3491] module 'ROM' declared at 'D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/ROM.vhd:26' bound to instance 'rom_use' of component 'ROM' [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:141]
+INFO: [Synth 8-638] synthesizing module 'ROM' [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/ROM.vhd:36]
+INFO: [Synth 8-226] default block is never used [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/ROM.vhd:53]
+INFO: [Synth 8-256] done synthesizing module 'ROM' (0#1) [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/ROM.vhd:36]
+WARNING: [Synth 8-5640] Port 'load' is missing in component declaration [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:95]
+INFO: [Synth 8-3491] module 'Multiplier_unit' declared at 'D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:7' bound to instance 'multiply_unit_use' of component 'Multiplier_unit' [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:147]
+INFO: [Synth 8-638] synthesizing module 'Multiplier_unit' [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:27]
+WARNING: [Synth 8-614] signal 'mu1' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'mu2' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'mu3' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'mu4' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'sig_sreg1_next' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'sig_sreg2_next' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'sig_sreg3_next' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'sig_sreg4_next' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'address' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'coeff' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 's_reg1' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'sig_sreg1' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 's_reg2' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'sig_sreg2' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 's_reg3' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'sig_sreg3' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 's_reg4' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'sig_sreg4' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'dataROM' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'coeff_next' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'mu1_next' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'mu2_next' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'mu3_next' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'mu4_next' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+INFO: [Synth 8-256] done synthesizing module 'Multiplier_unit' (0#1) [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:27]
+WARNING: [Synth 8-614] signal 'dataRom_output' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:165]
+WARNING: [Synth 8-614] signal 'valid' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:165]
+WARNING: [Synth 8-614] signal 'input' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:165]
+INFO: [Synth 8-256] done synthesizing module 'Controller' (0#1) [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:51]
+WARNING: [Synth 8-6014] Unused sequential element address_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:57]
+WARNING: [Synth 8-6014] Unused sequential element mu2_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:50]
+WARNING: [Synth 8-6014] Unused sequential element mu3_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:51]
+WARNING: [Synth 8-6014] Unused sequential element mu4_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:52]
+WARNING: [Synth 8-6014] Unused sequential element mat_coeff_1_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:121]
+WARNING: [Synth 8-6014] Unused sequential element mat_coeff_2_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:122]
+WARNING: [Synth 8-6014] Unused sequential element count_mul_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:123]
+WARNING: [Synth 8-6014] Unused sequential element count_col_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:124]
+WARNING: [Synth 8-6014] Unused sequential element shift_count_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:125]
+WARNING: [Synth 8-6014] Unused sequential element count_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:126]
+WARNING: [Synth 8-6014] Unused sequential element state_reg_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:127]
+WARNING: [Synth 8-3848] Net load in module/entity Controller does not have driver. [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:39]
+WARNING: [Synth 8-3848] Net clear in module/entity Controller does not have driver. [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:78]
+WARNING: [Synth 8-3848] Net s_reg1 in module/entity Controller does not have driver. [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:65]
+WARNING: [Synth 8-3848] Net s_reg2 in module/entity Controller does not have driver. [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:67]
+WARNING: [Synth 8-3848] Net s_reg3 in module/entity Controller does not have driver. [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:69]
+WARNING: [Synth 8-3848] Net s_reg4 in module/entity Controller does not have driver. [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:71]
+WARNING: [Synth 8-3848] Net mu_en in module/entity Controller does not have driver. [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:76]
+WARNING: [Synth 8-3848] Net address_input in module/entity Controller does not have driver. [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:73]
+WARNING: [Synth 8-7129] Port load in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reset in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port valid in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port input[7] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port input[6] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port input[5] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port input[4] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port input[3] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port input[2] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port input[1] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port input[0] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[13] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[12] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[11] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[10] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[9] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[8] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[7] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[6] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[5] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[4] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[3] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[2] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[1] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[0] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[14] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[13] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[12] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[11] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[10] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[9] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[8] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[7] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[6] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[5] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[4] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[3] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[2] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[1] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[0] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[14] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[13] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[12] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[11] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[10] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[9] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[8] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[7] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[6] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[5] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[4] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[3] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[2] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[1] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[0] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[14] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[13] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[12] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[11] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[10] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[9] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[8] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[7] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[6] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[5] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[4] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[3] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[2] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[1] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[0] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[14] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[13] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[12] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[11] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[10] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[9] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[8] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[7] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[6] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[5] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[4] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[3] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[2] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[1] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[0] in module Controller is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2460.348 ; gain = 538.535
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2478.258 ; gain = 556.445
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2478.258 ; gain = 556.445
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 2478.258 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2578.805 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+RTL Elaboration Complete:  : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2613.871 ; gain = 692.059
+15 Infos, 132 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2613.871 ; gain = 1045.945
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+ERROR: [Common 17-180] Spawn failed: No error
+refresh_design
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2650.344 ; gain = 21.809
+---------------------------------------------------------------------------------
+ERROR: [Synth 8-36] 'other' is not declared [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:82]
+ERROR: [Synth 8-36] 'other' is not declared [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:83]
+ERROR: [Synth 8-36] 'other' is not declared [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:84]
+ERROR: [Synth 8-36] 'other' is not declared [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:85]
+INFO: [Synth 8-11252] unit 'behavioral' is ignored due to previous errors [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:148]
+INFO: [Synth 8-10443] VHDL file 'D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd' is ignored due to errors
+ERROR: [Synth 8-439] module 'Controller' not found
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2757.387 ; gain = 128.852
+---------------------------------------------------------------------------------
+RTL Elaboration failed
+refresh_design: Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2757.422 ; gain = 128.887
+ERROR: [Common 17-39] 'refresh_design' failed due to earlier errors.
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+refresh_design
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2793.973 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'Controller' [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:51]
+INFO: [Synth 8-3491] module 'ROM' declared at 'D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/ROM.vhd:26' bound to instance 'rom_use' of component 'ROM' [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:141]
+INFO: [Synth 8-638] synthesizing module 'ROM' [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/ROM.vhd:36]
+INFO: [Synth 8-226] default block is never used [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/ROM.vhd:53]
+INFO: [Synth 8-256] done synthesizing module 'ROM' (0#1) [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/ROM.vhd:36]
+WARNING: [Synth 8-5640] Port 'load' is missing in component declaration [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:95]
+INFO: [Synth 8-3491] module 'Multiplier_unit' declared at 'D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:7' bound to instance 'multiply_unit_use' of component 'Multiplier_unit' [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:147]
+INFO: [Synth 8-638] synthesizing module 'Multiplier_unit' [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:27]
+WARNING: [Synth 8-614] signal 'mu1' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'mu2' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'mu3' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'mu4' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'sig_sreg1_next' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'sig_sreg2_next' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'sig_sreg3_next' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'sig_sreg4_next' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'address' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'coeff' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 's_reg1' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'sig_sreg1' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 's_reg2' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'sig_sreg2' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 's_reg3' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'sig_sreg3' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 's_reg4' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'sig_sreg4' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'dataROM' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'coeff_next' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'mu1_next' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'mu2_next' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'mu3_next' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+WARNING: [Synth 8-614] signal 'mu4_next' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:77]
+INFO: [Synth 8-256] done synthesizing module 'Multiplier_unit' (0#1) [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:27]
+WARNING: [Synth 8-614] signal 'dataRom_output' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:165]
+WARNING: [Synth 8-614] signal 'valid' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:165]
+WARNING: [Synth 8-614] signal 'input' is read in the process but is not in the sensitivity list [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:165]
+INFO: [Synth 8-256] done synthesizing module 'Controller' (0#1) [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:51]
+WARNING: [Synth 8-6014] Unused sequential element address_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:57]
+WARNING: [Synth 8-6014] Unused sequential element mu2_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:50]
+WARNING: [Synth 8-6014] Unused sequential element mu3_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:51]
+WARNING: [Synth 8-6014] Unused sequential element mu4_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd:52]
+WARNING: [Synth 8-6014] Unused sequential element mat_coeff_1_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:121]
+WARNING: [Synth 8-6014] Unused sequential element mat_coeff_2_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:122]
+WARNING: [Synth 8-6014] Unused sequential element count_mul_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:123]
+WARNING: [Synth 8-6014] Unused sequential element count_col_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:124]
+WARNING: [Synth 8-6014] Unused sequential element shift_count_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:125]
+WARNING: [Synth 8-6014] Unused sequential element count_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:126]
+WARNING: [Synth 8-6014] Unused sequential element state_reg_reg was removed.  [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:127]
+WARNING: [Synth 8-3848] Net load in module/entity Controller does not have driver. [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:39]
+WARNING: [Synth 8-3848] Net clear in module/entity Controller does not have driver. [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:78]
+WARNING: [Synth 8-3848] Net s_reg1 in module/entity Controller does not have driver. [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:65]
+WARNING: [Synth 8-3848] Net s_reg2 in module/entity Controller does not have driver. [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:67]
+WARNING: [Synth 8-3848] Net s_reg3 in module/entity Controller does not have driver. [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:69]
+WARNING: [Synth 8-3848] Net s_reg4 in module/entity Controller does not have driver. [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:71]
+WARNING: [Synth 8-3848] Net mu_en in module/entity Controller does not have driver. [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:76]
+WARNING: [Synth 8-3848] Net address_input in module/entity Controller does not have driver. [D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd:73]
+WARNING: [Synth 8-7129] Port load in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reset in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port valid in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port input[7] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port input[6] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port input[5] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port input[4] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port input[3] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port input[2] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port input[1] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port input[0] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[13] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[12] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[11] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[10] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[9] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[8] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[7] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[6] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[5] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[4] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[3] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[2] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[1] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_rom[0] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[14] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[13] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[12] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[11] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[10] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[9] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[8] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[7] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[6] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[5] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[4] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[3] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[2] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[1] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU1[0] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[14] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[13] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[12] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[11] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[10] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[9] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[8] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[7] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[6] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[5] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[4] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[3] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[2] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[1] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU2[0] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[14] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[13] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[12] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[11] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[10] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[9] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[8] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[7] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[6] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[5] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[4] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[3] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[2] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[1] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU3[0] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[14] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[13] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[12] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[11] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[10] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[9] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[8] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[7] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[6] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[5] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[4] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[3] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[2] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[1] in module Controller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MU4[0] in module Controller is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2793.973 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2793.973 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2793.973 ; gain = 0.000
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 2821.152 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+refresh_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2821.152 ; gain = 27.180
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'Controller'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2023.2/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'Controller' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj Controller_vhdl.prj"
+ECHO is off.
+ECHO is off.
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Multiplier_unit.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Multiplier_unit'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/ROM.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'ROM'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sources_1/new/Controller.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Controller'
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot Controller_behav xil_defaultlib.Controller -log elaborate.log"
+ECHO is off.
+ECHO is off.
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot Controller_behav xil_defaultlib.Controller -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.numeric_std
+Compiling architecture behavioral of entity xil_defaultlib.ROM [rom_default]
+Compiling architecture behavioral of entity xil_defaultlib.Multiplier_unit [multiplier_unit_default]
+Compiling architecture behavioral of entity xil_defaultlib.controller
+Built simulation snapshot Controller_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "Controller_behav -key {Behavioral:sim_1:Functional:Controller} -tclbatch {Controller.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source Controller.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'Controller_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 2838.629 ; gain = 17.477
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+add_files -fileset sim_1 -norecurse {{D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/mul_tb.vhd}}
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+ERROR: [Common 17-180] Spawn failed: No error
+update_compile_order -fileset sim_1
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+ERROR: [Common 17-180] Spawn failed: No error
+set_property top mul_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+ERROR: [Common 17-180] Spawn failed: No error
+update_compile_order -fileset sim_1
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'mul_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+boost::filesystem::remove: The process cannot access the file because it is being used by another process: "D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.sim/sim_1/behav/xsim/simulate.log"
+ERROR: [Common 17-180] Spawn failed: No error
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'mul_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+boost::filesystem::remove: The process cannot access the file because it is being used by another process: "D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.sim/sim_1/behav/xsim/simulate.log"
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'mul_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+boost::filesystem::remove: The process cannot access the file because it is being used by another process: "D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.sim/sim_1/behav/xsim/simulate.log"
+file mkdir D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sim_1/new
+file mkdir D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sim_1/new
+file mkdir D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sim_1/new
+file mkdir D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sim_1/new
+file mkdir D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sim_1/new
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+file mkdir D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sim_1/new
+file mkdir {D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sim_1/new}
+close [ open {D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sim_1/new/mul_tb.vhd} w ]
+add_files -fileset sim_1 {{D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sim_1/new/mul_tb.vhd}}
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+update_compile_order -fileset sim_1
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+export_ip_user_files -of_objects  [get_files {{D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/mul_tb.vhd}}] -no_script -reset -force -quiet
+remove_files  -fileset sim_1 {{D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/mul_tb.vhd}}
+update_compile_order -fileset sim_1
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sim_1\new\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sim_1\new\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+ERROR: [Common 17-180] Spawn failed: No error
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'mul_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+boost::filesystem::remove: The process cannot access the file because it is being used by another process: "D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.sim/sim_1/behav/xsim/simulate.log"
+export_ip_user_files -of_objects  [get_files {{D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sim_1/new/mul_tb.vhd}}] -no_script -reset -force -quiet
+remove_files  -fileset sim_1 {{D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sim_1/new/mul_tb.vhd}}
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sim_1\new\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sim_1\new\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+ERROR: [Common 17-180] Spawn failed: No error
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+add_files -fileset sim_1 -norecurse {{D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.srcs/sim_1/new/mul_tb.vhd}}
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sim_1\new\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sim_1\new\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+update_compile_order -fileset sim_1
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sim_1\new\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sim_1\new\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+set_property top mul_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sim_1\new\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sim_1\new\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sim_1\new\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sim_1\new\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+update_compile_order -fileset sim_1
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sim_1\new\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sim_1\new\mul_tb.vhd:]
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'mul_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+boost::filesystem::remove: The process cannot access the file because it is being used by another process: "D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.sim/sim_1/behav/xsim/simulate.log"
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sim_1\new\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sim_1\new\mul_tb.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\ROM.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\sources_1\new\Multiplier_unit.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [D:\MASTERS\LUND UNIVERSITY\STUDY\Semester-2\Period 3\ICP-1\Matix_multiplier\Matrix_multiplier\Matrix_multiplier.srcs\mul_tb.vhd:]
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'mul_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+boost::filesystem::remove: The process cannot access the file because it is being used by another process: "D:/MASTERS/LUND UNIVERSITY/STUDY/Semester-2/Period 3/ICP-1/Matix_multiplier/Matrix_multiplier/Matrix_multiplier.sim/sim_1/behav/xsim/simulate.log"
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Sat Feb  3 15:18:01 2024...

@@ -20,7 +20,7 @@ entity Multiplier_unit is
            MU_2_out : out std_logic_vector (14 downto 0);
            MU_3_out : out std_logic_vector (14 downto 0);
            MU_4_out : out std_logic_vector (14 downto 0);
-           load : out std_logic
+           load : out std_logic 
            );
 end Multiplier_unit;
 
@@ -73,12 +73,16 @@ end process;
 
 
 
-
 combinational: process (mu_en,state_reg, state_next, count_mul) begin
 mu1_next <= mu1;
 mu2_next <= mu2;
 mu3_next <= mu3;
 mu4_next <= mu4;
+MU_1_out <= (others => '0');
+MU_2_out <= (others => '0');
+MU_3_out <= (others => '0');
+MU_4_out <= (others => '0');
+load_next <= '0';
 count_mul_next <= count_mul;
 sig_sreg1 <= sig_sreg1_next;
 sig_sreg2 <= sig_sreg2_next;
