@@ -23,8 +23,7 @@ entity RAM_controller is
            MU_3_in : in STD_LOGIC_VECTOR (15 downto 0);
            MU_4_in : in STD_LOGIC_VECTOR (15 downto 0);
            
-           MU_1_2_out : out STD_LOGIC_VECTOR (31 downto 0);
-           MU_3_4_out : out STD_LOGIC_VECTOR (31 downto 0); 
+           RAM_out : out STD_LOGIC_VECTOR (31 downto 0);
            ready_to_start : out std_logic);
            
 end RAM_controller;
@@ -35,7 +34,9 @@ type state_type is (s_idle, s_write_1, s_write_2, s_read_1_2, s_read_3_4);
 signal state_reg, state_next : state_type;
 --signal
 signal data_in, data_out : std_logic_vector (31 downto 0);
-signal address_count, address_count_next : std_logic_vector (7 downto 0);
+signal address_write_count, address_write_count_next : std_logic_vector (7 downto 0);
+signal address_read_count, address_read_count_next : std_logic_vector (7 downto 0);
+signal address : std_logic_vector (7 downto 0);
 signal read_count, read_count_next : std_logic_vector (1 downto 0);
 signal mu_1_2, mu_3_4 : std_logic_vector (31 downto 0);
 signal mu_1_2_next, mu_3_4_next : std_logic_vector (31 downto 0);
@@ -66,7 +67,7 @@ wrapper : sram_wrapper port map(
         clk => clk,
         cs_n =>  LOW,
         we_n => write_enable,
-        address => address_count,
+        address => address,
         ry => RY,
         write_data => data_in,
         read_data => data_out        
@@ -75,14 +76,16 @@ wrapper : sram_wrapper port map(
 sequential: process (clk, rst) begin
             if (rising_edge (clk)) then 
               if rst = '1' then 
-                address_count <= (others => '0');
+                address_write_count <= (others => '0');
+                address_read_count <= (others => '0');
                 read_count <= "00";
                 RY <= '0';  --???
                 state_reg <= s_idle;
                 mu_1_2 <= (others => '0');
                 mu_3_4 <= (others => '0');
             else 
-                address_count <= address_count_next;
+                address_write_count <= address_write_count_next;
+                address_read_count <= address_read_count_next;
                 read_count <= read_count_next;
                 state_reg <= state_next;
                 mu_1_2 <= mu_1_2_next;
@@ -91,9 +94,10 @@ sequential: process (clk, rst) begin
         end if;
 end process;
     
-behavior: process (state_reg, state_next, write_enable, read_count, read_ram, address_count, RY) begin --, MU_1_in, MU_2_in, MU_3_in, MU_4_in
+behavior: process (state_reg, state_next, write_enable, read_count, read_ram, address_read_count, address_write_count, RY) begin --, MU_1_in, MU_2_in, MU_3_in, MU_4_in
 --Default 
-address_count_next <= address_count; --address is having latch
+address_write_count_next <= address_write_count;
+address_read_count_next <= address_read_count;
 read_count_next <= read_count;
 write_enable <= '1';
 state_next <= state_reg;
@@ -101,7 +105,8 @@ state_next <= state_reg;
 mu_1_2_next <= mu_1_2;           
 mu_3_4_next <= mu_3_4;           
 data_in <= (others => '0');
-ready_to_start <= '0';     
+ready_to_start <= '0';   
+address  <= std_logic_vector (address_write_count);
       if read_ram = '1' then  
       --CASE  
         case state_reg is 
@@ -110,10 +115,10 @@ ready_to_start <= '0';
             
                if write_enable = '1' then
                 data_in <= (others => '0');
-                address_count_next <= address_count + 1;
+                address_write_count_next <= address_write_count + 1;
                 
-                  if address_count = "00001000" then
-                    address_count_next <= (others => '0');
+                  if address_write_count = "00001000" then
+                    address_write_count_next <= (others => '0');
                     state_next <= s_write_1;
                   else
                    state_next <= s_idle;
@@ -122,55 +127,74 @@ ready_to_start <= '0';
             when s_write_1 =>
                     write_enable <= '0';                   --should we add wr_en = 0 in both the states?
                     data_in <= MU_1_in & MU_2_in;
-                    address_count_next <= address_count + 1;
+                    address_write_count_next <= address_write_count + 1;
                     state_next <= s_write_2;
             when s_write_2 =>
                     write_enable <= '0';
                     data_in <= MU_3_in & MU_4_in;
-                    address_count_next <= address_count + 1;
-                    state_next <= s_read_3_4;
-            when s_read_3_4 =>
-                    if read_count = "00" then
-                        address_count_next <= address_count - 1;
-                        state_next <= s_read_3_4;
-                        read_count_next <= read_count + 1;
-                    elsif read_count = "01" then
-                        state_next <= s_read_3_4;
-                        read_count_next <= read_count + 1;
-                    elsif read_count = "10" then
-                        mu_3_4_next <= data_out;
-                        read_count_next <= read_count + 1;
-                        
-                    elsif read_count = "11" then
-                        read_count_next <= "00";
-                        --ready_to_start <= '1';  
-                        state_next <= s_read_1_2;
-                    end if;
-                    
+                    --address_write_count_next <= address_write_count + 1;
+                    address <= address_write_count;
+                    state_next <= s_read_1_2;
+            
             when s_read_1_2 =>
                     if read_count = "00" then
-                        address_count_next <= address_count - 1;
+                        address  <= std_logic_vector (address_read_count);
                         state_next <= s_read_1_2;
                         read_count_next <= read_count + 1;
                     elsif read_count = "01" then 
+                        address  <= std_logic_vector (address_read_count);
                         state_next <= s_read_1_2;
                         read_count_next <= read_count + 1;
+
                     elsif read_count = "10" then
-                        mu_1_2_next <= data_out;
-                        read_count_next <= read_count + 1;
-                    elsif read_count = "11" then
+                        address  <= std_logic_vector (address_read_count);
+                        mu_1_2_next <= data_out;                       
+                        read_count_next <= read_count + 1;  
+                        state_next <= s_read_1_2;  
+                                                             
+                    elsif read_count = "11" then    
+                        address  <= std_logic_vector (address_read_count);
+                         RAM_out <= mu_1_2;
                         read_count_next <= "00";
-                        ready_to_start <= '1';  
-                        state_next <= s_write_1;
+                        state_next <= s_read_3_4;
+                        
                     end if;
+    
+            
+            when s_read_3_4 =>
+                    if read_count = "00" then
+                        address_read_count_next <= address_read_count + 1;
+                        address  <= std_logic_vector (address_read_count);
+                        state_next <= s_read_3_4;
+                        read_count_next <= read_count + 1;
+                    elsif read_count = "01" then
+                        address  <= std_logic_vector (address_read_count);
+                        state_next <= s_read_3_4;
+                        read_count_next <= read_count + 1;
+                       
+                    elsif read_count = "10" then
+                        address  <= std_logic_vector (address_read_count);
+                         mu_3_4_next <= data_out;
+                         read_count_next <= read_count + 1;
+                         
+                    elsif read_count = "11" then    
+                        read_count_next <= "00";
+                        ready_to_start <= '1'; 
+                        RAM_out <= mu_3_4;                                  --Outputs
+                        state_next <= s_write_1;
+                        address_read_count_next <= address_read_count + 1;
+                        address  <= std_logic_vector (address_read_count);
+
+                    end if;
+                    
+
                                  
             end case;
           
      end if;
 end process;    
 
---Taking outputs
-MU_1_2_out <= mu_1_2;
-MU_3_4_out <= mu_3_4;
+
+
 
 end Behavioral;
