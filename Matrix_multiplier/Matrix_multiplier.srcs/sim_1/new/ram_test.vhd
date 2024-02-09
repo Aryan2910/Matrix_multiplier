@@ -10,67 +10,78 @@ architecture bench of ram_test is
   component RAM_controller
       Port ( clk : in STD_LOGIC;
              rst : in STD_LOGIC;
-             load : in STD_LOGIC;
              read_ram : in std_logic;
-             mul_en : in std_logic;
-             MU_1_in : in STD_LOGIC_VECTOR (15 downto 0);
-             MU_2_in : in STD_LOGIC_VECTOR (15 downto 0);
-             MU_3_in : in STD_LOGIC_VECTOR (15 downto 0);
-             MU_4_in : in STD_LOGIC_VECTOR (15 downto 0);
-             MU_1_2_out : out STD_LOGIC_VECTOR (31 downto 0);
-             MU_3_4_out : out STD_LOGIC_VECTOR (31 downto 0); 
+             MU_in : in STD_LOGIC_VECTOR (17 downto 0);
+             RAM_out : out STD_LOGIC_VECTOR (31 downto 0);
              ready_to_start : out std_logic);
   end component;
 
   signal clk: STD_LOGIC;
   signal rst: STD_LOGIC;
-  signal load: STD_LOGIC;
   signal read_ram: std_logic;
-  signal mul_en: std_logic;
-  signal MU_1_in: STD_LOGIC_VECTOR (15 downto 0);
-  signal MU_2_in: STD_LOGIC_VECTOR (15 downto 0);
-  signal MU_3_in: STD_LOGIC_VECTOR (15 downto 0);
-  signal MU_4_in: STD_LOGIC_VECTOR (15 downto 0);
-  signal MU_1_2_out: STD_LOGIC_VECTOR (31 downto 0);
-  signal MU_3_4_out: STD_LOGIC_VECTOR (31 downto 0);
+  signal MU_in: STD_LOGIC_VECTOR (17 downto 0);
   signal ready_to_start: std_logic;
-
+  signal RAM_out : std_logic_vector (31 downto 0);
+  signal tb_clk : std_logic := '0';
   constant clock_period: time := 10 ns;
-  signal stop_the_clock: boolean;
-
+    
 begin
 
   uut: RAM_controller port map ( clk            => clk,
                                  rst            => rst,
-                                 load           => load,
                                  read_ram       => read_ram,
-                                 mul_en         => mul_en,
-                                 MU_1_in        => MU_1_in,
-                                 MU_2_in        => MU_2_in,
-                                 MU_3_in        => MU_3_in,
-                                 MU_4_in        => MU_4_in,
-                                 MU_1_2_out     => MU_1_2_out,
-                                 MU_3_4_out     => MU_3_4_out,
+                                 MU_in        => MU_in,
+                                 RAM_out     => RAM_out,
                                  ready_to_start => ready_to_start );
 
+tb_clk <= not clk after clock_period/2;
+clk <= tb_clk;
   stimulus: process
   begin
-  
+    rst <= '1';
+        read_ram <= '0';
+     MU_in <= (others => '0');
     -- Put initialisation code here
-    
-
+     wait for 20 * clock_period;
+     read_ram <= '1';
+     rst <= '0';
+     wait for 17 * clock_period;
+     MU_in <= "000000000000000001";
+     
+     wait for clock_period;
+     MU_in <= "000000000000000010";
+          wait for clock_period;
+     MU_in <= "000000000000000011";
+          wait for clock_period;
+     MU_in <= "000000000000000100";
+          wait for clock_period;
+     MU_in <= "000000000000000101";
+          wait for clock_period;
+     MU_in <= "000000000000000110";
+          wait for clock_period;
+     MU_in <= "000000000000000111";
+          wait for clock_period;
+     MU_in <= "000000000000001000";
+          wait for clock_period;
+     MU_in <= "000000000000001001";
+          wait for clock_period;
+     MU_in <= "000000000000000110";
+          wait for clock_period;
+     MU_in <= "000000000000111110";
+          wait for clock_period;
+     MU_in <= "000000000000111110";
+          wait for clock_period;
+     MU_in <= "000000000000111110";
+          wait for clock_period;
+     MU_in <= "000000000000111110";
+          wait for clock_period;
+     MU_in <= "000000000000111110";
+          wait for clock_period;
+     MU_in <= "000000000000111110";
+     
     -- Put test bench stimulus code here
 
-    stop_the_clock <= true;
-    wait;
-  end process;
 
-  clocking: process
-  begin
-    while not stop_the_clock loop
-      clk <= '0', '1' after clock_period / 2;
-      wait for clock_period;
-    end loop;
     wait;
   end process;
 
