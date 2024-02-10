@@ -18,7 +18,7 @@ entity RAM_controller is
     Port ( clk : in STD_LOGIC;
            rst : in STD_LOGIC;
            read_ram : in std_logic;
-           MU_in : in STD_LOGIC_VECTOR (17 downto 0);
+           MU_in : in STD_LOGIC_VECTOR (287 downto 0);
            RAM_out : out STD_LOGIC_VECTOR (31 downto 0);
            ready_to_start : out std_logic);
            
@@ -26,7 +26,7 @@ end RAM_controller;
 
 architecture Behavioral of RAM_controller is
 --states
-type state_type is (s_idle, s_write, s_read);
+type state_type is (s_idle,s_shift_input, s_write, s_read);
 signal state_reg, state_next : state_type;
 --signal
 signal data_in, data_out : std_logic_vector (31 downto 0);
@@ -34,11 +34,14 @@ signal address_write_count, address_write_count_next : std_logic_vector (7 downt
 signal address_read_count, address_read_count_next : std_logic_vector (7 downto 0);
 signal address : std_logic_vector (7 downto 0);
 signal read_count, read_count_next : std_logic_vector (1 downto 0);
+--shift signal
+signal s_mu_in, s_mu_in_next : std_logic_vector (287 downto 0);
 signal mu : std_logic_vector (31 downto 0);
 signal mu_next : std_logic_vector (31 downto 0);
 --One bit signals
 signal write_enable : std_logic;
 signal RY : std_logic;
+signal S_HIGH: std_logic_vector(17 downto 0);
 --Constant
 constant LOW: std_logic := '0';
 
@@ -78,6 +81,7 @@ sequential: process (clk, rst) begin
                 RY <= '0';  --???
                 state_reg <= s_idle;
                 mu <= (others => '0');
+                s_mu_in <= (others => '0');
                 
             else 
                 address_write_count <= address_write_count_next;
@@ -85,12 +89,13 @@ sequential: process (clk, rst) begin
                 read_count <= read_count_next;
                 state_reg <= state_next;
                 mu <= mu_next;
+                s_mu_in  <= s_mu_in_next;
                 
             end if;
         end if;
 end process;
     
-behavior: process (state_reg, state_next, write_enable, read_count, read_ram, address_read_count, address_write_count, RY) begin --, MU_1_in, MU_2_in, MU_3_in, MU_4_in
+behavior: process (state_reg, state_next, write_enable, read_count, read_ram, address_read_count, address_write_count, RY,MU_in, s_mu_in) begin --, MU_1_in, MU_2_in, MU_3_in, MU_4_in
 --Default 
 address_write_count_next <= address_write_count;
 address_read_count_next <= address_read_count;
@@ -99,6 +104,7 @@ write_enable <= '1';
 state_next <= state_reg;
 data_in <= (others => '0');
 address  <= std_logic_vector (address_write_count);
+s_mu_in_next <= s_mu_in;
 --For output
 mu_next <= mu;                     
 ready_to_start <= '0';   
@@ -114,19 +120,26 @@ ready_to_start <= '0';
                 address_write_count_next <= address_write_count + 1;
                 
                   if address_write_count = "00010000" then
+                    s_mu_in_next <= MU_in;                                        --Taking original value
                     address_write_count_next <= (others => '0');
                     state_next <= s_write;
                   else
                    state_next <= s_idle;
                    end if; 
                 end if;
+            
+            when s_shift_input =>
+                    s_mu_in_next <= s_mu_in (269 downto 0) & s_mu_in (287 downto 270);
+                    
+                    state_next <= s_write;
             when s_write =>
                     if address_write_count = "00010000" then 
                         state_next <= s_read;    
                         else
-                        state_next <= s_write;
+                        state_next <= s_shift_input;
                         write_enable <= '0';                   --should we add wr_en = 0 in both the states?
-                        data_in <= "00000000000000" & MU_in;
+                        data_in <= "00000000000000" & s_mu_in (287 downto 270);
+                        S_HIGH <= s_mu_in(287 downto 270);
                         address_write_count_next <= address_write_count + 1;
                     end if;
                     

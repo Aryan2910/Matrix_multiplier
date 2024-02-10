@@ -11,7 +11,7 @@ architecture bench of ram_test is
       Port ( clk : in STD_LOGIC;
              rst : in STD_LOGIC;
              read_ram : in std_logic;
-             MU_in : in STD_LOGIC_VECTOR (17 downto 0);
+             MU_in : in STD_LOGIC_VECTOR (287 downto 0);
              RAM_out : out STD_LOGIC_VECTOR (31 downto 0);
              ready_to_start : out std_logic);
   end component;
@@ -19,7 +19,7 @@ architecture bench of ram_test is
   signal clk: STD_LOGIC;
   signal rst: STD_LOGIC;
   signal read_ram: std_logic;
-  signal MU_in: STD_LOGIC_VECTOR (17 downto 0);
+  signal MU_in: STD_LOGIC_VECTOR (287 downto 0);
   signal ready_to_start: std_logic;
   signal RAM_out : std_logic_vector (31 downto 0);
   signal tb_clk : std_logic := '0';
@@ -45,40 +45,9 @@ clk <= tb_clk;
      wait for 20 * clock_period;
      read_ram <= '1';
      rst <= '0';
-     wait for 17 * clock_period;
-     MU_in <= "000000000000000001";
-     
-     wait for clock_period;
-     MU_in <= "000000000000000010";
-          wait for clock_period;
-     MU_in <= "000000000000000011";
-          wait for clock_period;
-     MU_in <= "000000000000000100";
-          wait for clock_period;
-     MU_in <= "000000000000000101";
-          wait for clock_period;
-     MU_in <= "000000000000000110";
-          wait for clock_period;
-     MU_in <= "000000000000000111";
-          wait for clock_period;
-     MU_in <= "000000000000001000";
-          wait for clock_period;
-     MU_in <= "000000000000001001";
-          wait for clock_period;
-     MU_in <= "000000000000000110";
-          wait for clock_period;
-     MU_in <= "000000000000111110";
-          wait for clock_period;
-     MU_in <= "000000000000111110";
-          wait for clock_period;
-     MU_in <= "000000000000111110";
-          wait for clock_period;
-     MU_in <= "000000000000111110";
-          wait for clock_period;
-     MU_in <= "000000000000111110";
-          wait for clock_period;
-     MU_in <= "000000000000111110";
-     
+     wait for 5 * clock_period;
+     MU_in <= "000000000000000011000000000000000001000000000000000010000000000000000011000000000000000100000000000000000101000000000000000110000000000000000111000000000000001001000000000000001010000000000000001011000000000000001100000000000000001101000000000000001110000000000000001111000000000000010000";
+
     -- Put test bench stimulus code here
 
 
