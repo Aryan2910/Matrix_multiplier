@@ -16,10 +16,10 @@ use ieee.std_logic_unsigned.all;
 
 entity RAM_controller is
     Port ( clk : in STD_LOGIC;
-           rst : in STD_LOGIC;
+           reset : in STD_LOGIC;
            read_ram : in std_logic;
            MU_in : in STD_LOGIC_VECTOR (287 downto 0);
-           RAM_out : out STD_LOGIC_VECTOR (31 downto 0);
+           RAM_out : out STD_LOGIC_VECTOR (8 downto 0);
            ready_to_start : out std_logic);
            
 end RAM_controller;
@@ -34,10 +34,11 @@ signal address_write_count, address_write_count_next : std_logic_vector (7 downt
 signal address_read_count, address_read_count_next : std_logic_vector (7 downto 0);
 signal address : std_logic_vector (7 downto 0);
 signal read_count, read_count_next : std_logic_vector (1 downto 0);
+signal distribute_count, distribute_count_next : std_logic_vector (1 downto 0);
 --shift signal
 signal s_mu_in, s_mu_in_next : std_logic_vector (287 downto 0);
-signal mu : std_logic_vector (31 downto 0);
-signal mu_next : std_logic_vector (31 downto 0);
+signal mu : std_logic_vector (8 downto 0);
+signal mu_next : std_logic_vector (8 downto 0);
 --One bit signals
 signal write_enable : std_logic;
 signal RY : std_logic;
@@ -72,9 +73,9 @@ wrapper : sram_wrapper port map(
         read_data => data_out        
 );
 
-sequential: process (clk, rst) begin
+sequential: process (clk, reset) begin
             if (rising_edge (clk)) then 
-              if rst = '1' then 
+              if reset = '1' then 
                 address_write_count <= (others => '0');
                 address_read_count <= (others => '0');
                 read_count <= "00";
@@ -82,7 +83,7 @@ sequential: process (clk, rst) begin
                 state_reg <= s_idle;
                 mu <= (others => '0');
                 s_mu_in <= (others => '0');
-                
+                distribute_count <= (others => '0');
             else 
                 address_write_count <= address_write_count_next;
                 address_read_count <= address_read_count_next;
@@ -90,12 +91,13 @@ sequential: process (clk, rst) begin
                 state_reg <= state_next;
                 mu <= mu_next;
                 s_mu_in  <= s_mu_in_next;
+                distribute_count <= distribute_count_next;
                 
             end if;
         end if;
 end process;
     
-behavior: process (state_reg, state_next, write_enable, read_count, read_ram, address_read_count, address_write_count, RY,MU_in, s_mu_in) begin --, MU_1_in, MU_2_in, MU_3_in, MU_4_in
+behavior: process (state_reg, state_next, write_enable, read_count, read_ram, address_read_count, address_write_count, RY,MU_in, s_mu_in, distribute_count) begin --, MU_1_in, MU_2_in, MU_3_in, MU_4_in
 --Default 
 address_write_count_next <= address_write_count;
 address_read_count_next <= address_read_count;
@@ -105,6 +107,7 @@ state_next <= state_reg;
 data_in <= (others => '0');
 address  <= std_logic_vector (address_write_count);
 s_mu_in_next <= s_mu_in;
+distribute_count_next <= distribute_count;
 --For output
 mu_next <= mu;                     
 ready_to_start <= '0';   
@@ -150,8 +153,19 @@ ready_to_start <= '0';
                         read_count_next <= read_count + 1;
                     elsif read_count = "01" then 
                         address  <= std_logic_vector (address_read_count);
-                        mu_next <= data_out;                       
-                        read_count_next <= read_count + 1;  
+                        if distribute_count = "00" then 
+                        distribute_count_next <= distribute_count + 1;
+                        elsif distribute_count = "01" then
+                        mu_next <= data_out(17 downto 9);
+                        distribute_count_next <= distribute_count + 1;
+                        
+                        elsif distribute_count = "10" then
+                        distribute_count_next <= "00";
+                        mu_next <= data_out(8 downto 0);
+                        read_count_next <= read_count + 1; 
+                        end if;
+                                               
+                         
                         state_next <= s_read;                                      
                     elsif read_count = "10" then    
                         address  <= std_logic_vector (address_read_count);

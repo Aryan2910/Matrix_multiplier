@@ -14,10 +14,10 @@ architecture tb of tb_Controller is
         port (clk        : in std_logic;
               reset      : in std_logic;
               input      : in std_logic_vector (7 downto 0);
-              data_rom   : in std_logic_vector (13 downto 0);
-              mul_en     : out std_logic;
               load       : in std_logic;
               --valid      : in std_logic;
+              mul_en     : out std_logic;
+              read_ram   : out std_logic;
               s_reg1_out : out std_logic_vector (63 downto 0);
               s_reg2_out : out std_logic_vector (63 downto 0);
               s_reg3_out : out std_logic_vector (63 downto 0);
@@ -27,8 +27,8 @@ architecture tb of tb_Controller is
     signal clk        : std_logic;
     signal reset      : std_logic;
     signal input      : std_logic_vector (7 downto 0);
-    signal data_rom   : std_logic_vector (13 downto 0);
     signal mul_en     : std_logic;
+    signal read_ram     : std_logic;
     signal load       : std_logic;
     signal valid      : std_logic;
     signal s_reg1_out : std_logic_vector (63 downto 0);
@@ -46,7 +46,7 @@ begin
     port map (clk        => clk,
               reset      => reset,
               input      => input,
-              data_rom   => data_rom,
+              read_ram   => read_ram,
               mul_en     => mul_en,
               load       => load,
               --valid      => valid,
@@ -65,18 +65,19 @@ begin
     begin
         -- EDIT Adapt initialization as needed
         input <= (others => '0');
-        data_rom <= (others => '0');
+        load <= '0';
         valid <= '0';
+        reset <= '1';
         wait for 10 ns;
         valid <= '1';
         -- Reset generation
         wait for 20 * TbPeriod;
         -- EDIT: Check that reset is really your reset signal
-        reset <= '1';
+        
         wait for 10 ns;
         reset <= '0';
         --wait for 10 ns;
-        data_rom <= "00010001000101";
+        
         -- EDIT Add stimuli here
         input <= "10001000";
         wait for 10 ns;
@@ -110,4 +111,3 @@ begin
 end tb;
 
 -- Configuration block below is required by some simulators. Usually no need to edit.
-
