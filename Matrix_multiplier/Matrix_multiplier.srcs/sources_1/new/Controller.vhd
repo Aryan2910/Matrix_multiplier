@@ -50,8 +50,8 @@ end Controller;
 architecture Behavioral of Controller is
 --Signals defined   
  
-signal shift_count : std_logic_vector(1 downto 0);    
-signal shift_count_next : std_logic_vector(1 downto 0);    
+signal shift_count : std_logic_vector(2 downto 0);    
+signal shift_count_next : std_logic_vector(2 downto 0);    
 signal count : std_logic_vector(5 downto 0);    
 signal count_next : std_logic_vector(5 downto 0);
 signal s_reg1 : std_logic_vector (63 downto 0);
@@ -107,7 +107,7 @@ end process;
 
 
   
-Shifting: process(shift_count,state_reg,s_reg1,s_reg2,s_reg3,s_reg4,count, mul_en_prev, mul_en_next, read_ram_next, read_ram_prev)
+Shifting: process(shift_count,state_reg,s_reg1,s_reg2,s_reg3,s_reg4,count, mul_en_prev, mul_en_next,load, read_ram_next, read_ram_prev,ready)
 begin
             --stating initial conditions(to aavoid latches)
             state_next <= state_reg;
@@ -136,21 +136,23 @@ begin
 
                   state_next <= state_multiply;
                 else
-                    if shift_count = "00" then
+                    if shift_count = "000" then 
+                        shift_count_next <= shift_count + 1;
+                    elsif shift_count = "001" then
                         count_next <= count + 1;
                         shift_count_next <= shift_count + 1;
                         s_reg1_next <= s_reg1(55 downto 0) & input;    
-                     elsif shift_count = "01" then
+                     elsif shift_count = "010" then
                         count_next <= count + 1;
                         shift_count_next <= shift_count + 1;
                         s_reg2_next <= s_reg2(55 downto 0) & input;
-                     elsif shift_count = "10" then
+                     elsif shift_count = "011" then
                         count_next <= count + 1;
                         shift_count_next <= shift_count + 1;
                         s_reg3_next <= s_reg3(55 downto 0) & input;
-                     elsif shift_count = "11" then
+                     elsif shift_count = "100" then
                         count_next <= count + 1;
-                        shift_count_next <= shift_count + 1;
+                        shift_count_next <= "001";
                         s_reg4_next <= s_reg4(55 downto 0) & input;
                      else
                         count_next <= count;
@@ -172,9 +174,9 @@ begin
                 end if;
              when state_load => 
                 read_ram_next <= '1';
-                if (read_ram_prev = '0' and read_ram_next = '1') then
+                
                   read_ram <= '1';
-                end if;       
+                      
                         --Insert how ram can be initiated      
             end case;     
 end process;

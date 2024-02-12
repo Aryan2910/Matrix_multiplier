@@ -112,12 +112,12 @@ distribute_count_next <= distribute_count;
 mu_next <= mu;                     
 ready_to_start <= '0';   
 
-      if read_ram = '1' then  
+    if read_ram = '1' then    
       --CASE  
         case state_reg is 
             
             when s_idle =>
-            
+             
                if write_enable = '1' then
                 data_in <= (others => '0');
                 address_write_count_next <= address_write_count + 1;
@@ -130,6 +130,8 @@ ready_to_start <= '0';
                    state_next <= s_idle;
                    end if; 
                 end if;
+                
+            
             
             when s_shift_input =>
                     s_mu_in_next <= s_mu_in (269 downto 0) & s_mu_in (287 downto 270);
@@ -181,8 +183,7 @@ ready_to_start <= '0';
                             end if;
                     end if;           
             end case;
-          
-     end if;
+        end if;  
 end process;    
 
 --Taking outputs

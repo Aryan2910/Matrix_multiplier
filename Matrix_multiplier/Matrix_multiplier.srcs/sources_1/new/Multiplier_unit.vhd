@@ -130,14 +130,18 @@ state_next <= state_reg;
 coeff_next <= coeff;
 s_MU_out_next <= s_MU_out;
 
-    if mul_en = '1' then 
+     
         case state_reg is
             when state_load =>
+               if mul_en = '1' then 
                 sig_sreg1_next <= s_reg1;
                 sig_sreg2_next <= s_reg2;
                 sig_sreg3_next <= s_reg3;
                 sig_sreg4_next <= s_reg4;
                 state_next <= select_coeff;
+                else
+                state_next <= state_load ;
+                end if;
             when select_coeff =>
                 if count_mul(0) = '1' then
                     coeff_next <= dataRom(13 downto 7);
@@ -201,8 +205,7 @@ s_MU_out_next <= s_MU_out;
              when state_ram => 
                            load_next <= '1';
                                 
-            end case;
-    end if;    
+            end case;   
 end process;
 --Taking output 
 MU_out <= s_MU_out;

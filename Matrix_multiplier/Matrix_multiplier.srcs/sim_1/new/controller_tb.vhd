@@ -15,7 +15,8 @@ architecture tb of tb_Controller is
               reset      : in std_logic;
               input      : in std_logic_vector (7 downto 0);
               load       : in std_logic;
-              --valid      : in std_logic;
+              
+              ready      : in std_logic;
               mul_en     : out std_logic;
               read_ram   : out std_logic;
               s_reg1_out : out std_logic_vector (63 downto 0);
@@ -30,7 +31,7 @@ architecture tb of tb_Controller is
     signal mul_en     : std_logic;
     signal read_ram     : std_logic;
     signal load       : std_logic;
-    signal valid      : std_logic;
+    signal ready      : std_logic;
     signal s_reg1_out : std_logic_vector (63 downto 0);
     signal s_reg2_out : std_logic_vector (63 downto 0);
     signal s_reg3_out : std_logic_vector (63 downto 0);
@@ -49,7 +50,7 @@ begin
               read_ram   => read_ram,
               mul_en     => mul_en,
               load       => load,
-              --valid      => valid,
+              ready      => ready,
               s_reg1_out => s_reg1_out,
               s_reg2_out => s_reg2_out,
               s_reg3_out => s_reg3_out,
@@ -66,10 +67,10 @@ begin
         -- EDIT Adapt initialization as needed
         input <= (others => '0');
         load <= '0';
-        valid <= '0';
+        ready <= '0';
         reset <= '1';
         wait for 10 ns;
-        valid <= '1';
+        ready <= '1';
         -- Reset generation
         wait for 20 * TbPeriod;
         -- EDIT: Check that reset is really your reset signal
