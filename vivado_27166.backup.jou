@@ -1,0 +1,132 @@
+#-----------------------------------------------------------
+# Vivado v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:47:39 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Wed Feb  7 13:13:11 2024
+# Process ID: 27166
+# Current directory: /h/dk/f/ar4013si-s/ICP_VP1/Matrix_nmultiplier_work/Matrix_multiplier
+# Command line: vivado
+# Log file: /h/dk/f/ar4013si-s/ICP_VP1/Matrix_nmultiplier_work/Matrix_multiplier/vivado.log
+# Journal file: /h/dk/f/ar4013si-s/ICP_VP1/Matrix_nmultiplier_work/Matrix_multiplier/vivado.jou
+# Running On: ylva.fransg.eit.lth.se, OS: Linux, CPU Frequency: 3999.938 MHz, CPU Physical cores: 6, Host memory: 16611 MB
+#-----------------------------------------------------------
+start_gui
+open_project /h/dk/f/ar4013si-s/ICP_VP1/Matrix_nmultiplier_work/Matrix_multiplier/Matrix_multiplier/Matrix_multiplier.xpr
+update_compile_order -fileset sources_1
+save_project_as Matrix_multiplier_work4 /h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4 -force
+set_property is_enabled true [get_files  /h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/sram_wrapper.vhd]
+set_property is_enabled true [get_files  /h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/SPHD110420.v]
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+set_property is_enabled false [get_files  /h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/sram_wrapper.vhd]
+set_property is_enabled false [get_files  /h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/SPHD110420.v]
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+set_property is_enabled true [get_files  /h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/sram_wrapper.vhd]
+set_property is_enabled true [get_files  /h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/SPHD110420.v]
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+launch_simulation
+source ram_test.tcl
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+update_compile_order -fileset sim_1
+relaunch_sim
+relaunch_sim
+relaunch_sim
+update_compile_order -fileset sim_1
+relaunch_sim
+relaunch_sim
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run all
+relaunch_sim
+run all
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+add_bp {/h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/RAM_controller.vhd} 124
+remove_bps -file {/h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/RAM_controller.vhd} -line 124
+add_bp {/h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/RAM_controller.vhd} 124
+remove_bps -file {/h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/RAM_controller.vhd} -line 124
+add_bp {/h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/RAM_controller.vhd} 124
+remove_bps -file {/h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/RAM_controller.vhd} -line 124
+add_bp {/h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/RAM_controller.vhd} 124
+remove_bps -file {/h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/RAM_controller.vhd} -line 124
+add_bp {/h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/RAM_controller.vhd} 124
+remove_bps -file {/h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/RAM_controller.vhd} -line 124
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+refresh_design
+refresh_design
+refresh_design
+refresh_design
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+set_property is_enabled false [get_files  /h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/SPHD110420.v]
+update_compile_order -fileset sources_1
+set_property is_enabled false [get_files  /h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/sram_wrapper.vhd]
+refresh_design
+refresh_design
+set_property is_enabled true [get_files  /h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/sram_wrapper.vhd]
+set_property is_enabled true [get_files  /h/dk/f/ar4013si-s/ICP_VP1/Matrix_multiplier_work4/Matrix_multiplier_work4.srcs/sources_1/new/SPHD110420.v]
+update_compile_order -fileset sources_1
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+run 10 us
+relaunch_sim
+relaunch_sim
+close_sim

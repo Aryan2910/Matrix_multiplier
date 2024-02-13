@@ -43,6 +43,7 @@ architecture Behavioral of Top_tb is
 
 --signal
 file input_file : text;
+file output_file : text;
 constant period : time := 10ns;
 signal clk : std_logic := '0';
 signal reset : std_logic := '1';
@@ -50,7 +51,11 @@ signal input : std_logic_vector (7 downto 0) := "00000000";
 signal ready : std_logic := '0';
 signal RAM_out : std_logic_vector (8 downto 0);
 signal ready_to_start : std_logic;
-
+signal count, count_next : std_logic_vector (5 downto 0);
+signal flag : std_logic;
+--states
+type state_type is (state_idle, state_read, state_wait, state_write);
+signal state_reg, state_next : state_type;
 --Component
     component TOP is
      port ( clk : in STD_LOGIC;
@@ -63,7 +68,9 @@ signal ready_to_start : std_logic;
            end component;
 begin
     clk <= not(clk) after period*0.5;
+    reset <= '0'after period * 10;
 
+    
     DUT : TOP port map (
         clk => clk,
         reset => reset,
@@ -72,58 +79,76 @@ begin
         RAM_out => RAM_out,
         ready_to_start => ready_to_start   
     );
-    process
---read_input : process    
---                variable v_ILINE : line;
---                variable v_SPACE : character;
---                variable variable_input : std_logic_vector (7 downto 0);
---                variable count : integer;    
+    
+    sequential : process (clk, reset) begin
+        if (rising_edge (clk) ) then
+            if (reset = '1') then
+                count <= (others => '0');
+                state_reg <= state_idle;
+            else
+                count <= count_next;
+                state_reg <= state_next;
+            end if;
+        end if;
+    end process;
+    
+
+
+    
+    Behavioral : process (count, state_reg, ready_to_start,flag)
+    
+                variable v_ILINE : line;  --Input line
+                variable v_OLINE : line;  --Output line
+                variable variable_input : std_logic_vector (7 downto 0);
+                variable variable_output : std_logic_vector (17 downto 0);
+                
     begin
---        count := 0;
+
+        file_open(input_file, "/h/dk/f/ar4013si-s/ICP_VP1/Matrix_nmultiplier_work/Matrix_multiplier/Stimuli files/input_stimuli.txt", READ_MODE);    
+        file_open (output_file, "/h/dk/f/ar4013si-s/ICP_VP1/Matrix_nmultiplier_work/Matrix_multiplier/Stimuli files/output_stimuli_tb.txt", WRITE_MODE);            
+        count_next <= count;
+        state_next <= state_reg;
+        flag <= '0';
         
-        reset <= '1';
-        wait for 2*period;
-        reset <= '0';
-        ready <= '1';    
-        wait for period;
-        ready <= '0'; 
-        input <= "10001000";
-        wait for 10 ns;
-        -- EDIT Add stimuli here
-        input <= "10001001";
-        wait for 10 ns;
-        input <= "10001010";
-        wait for 10 ns;
-        input <= "10001100";
-        wait for 10 ns;
-        input <= "10011000";
-        wait for 10 ns;
-        input <= "10101000";
-        wait for 10 ns;
-        input <= "10001100";
-        wait for 10 ns;
-        input <= "11001000";
-        wait for 10 ns;
-        input <= "10001110";
-        wait for 10 ns;
-        input <= "10001000";
-        wait; 
         
---        file_open(input_file, "/h/dk/f/ar4013si-s/ICP_VP1/Matrix_nmultiplier_work/Matrix_multiplier/Stimuli files/input_stimuli.txt", READ_MODE);    
---        while not endfile(input_file) loop
---            count := count + 1;
---            readline (input_file, v_ILINE);
---            read (v_ILINE, variable_input);
---            input <= variable_input;
---            wait for period;
---            if ((count mod 32)= 0 and count/32 /=1) then
---            input <= (others => '0');
---            ready <= '1';
---            end if;
-            
---            end loop;
-        
---        file_close (input_file);
+            case state_reg is 
+                
+                when state_idle =>
+                    state_next <= state_read;
+                    ready <= '1';
+                when state_read =>
+                if count = "100000" then
+                    state_next <= state_wait;
+                else
+                ready <= '0';
+                readline (input_file, v_ILINE);
+                read (v_ILINE, variable_input);
+                input <= variable_input;
+                count_next <= count + 1;
+                state_next <= state_read;
+                end if;
+                when state_wait =>
+                if ready_to_start = '1' then 
+                    state_next <= state_write;
+                    else 
+                    state_next <= state_wait;
+                    end if;
+                when state_write => 
+                    write (v_OLINE, RAM_out);    
+                if flag = '0' then
+                    flag <= '1';
+                    else
+                    flag <= '0';
+                    writeline (output_file, v_OLINE);
+                    
+                    end if;     
+                end case;
+
+       
+       file_close (input_file);
+       file_close (output_file);
+       
+    
             
     end process;
 end Behavioral;
