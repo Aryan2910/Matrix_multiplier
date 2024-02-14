@@ -39,8 +39,8 @@ entity TOP is
         ready : in std_logic;
         input : in std_logic_vector (7 downto 0);
         RAM_out : out std_logic_vector (8 downto 0);
-        ready_to_start : out std_logic
-        
+        ready_to_start : out std_logic;
+        write_file : out std_logic                     --Used to write it in the output file 
         );
         
 end TOP;
@@ -99,7 +99,8 @@ component RAM_controller
            MU_in : in STD_LOGIC_VECTOR (287 downto 0);
            --Outputs
            RAM_out : out STD_LOGIC_VECTOR (8 downto 0);
-           ready_to_start : out std_logic
+           ready_to_start : out std_logic;
+           write_file : out std_logic
            
         
     );
@@ -108,6 +109,7 @@ component RAM_controller
 signal s_load : std_logic;
 signal s_mul_en : std_logic;
 signal s_read_ram : std_logic;
+signal s_write_file : std_logic;
 signal s_reg1_out :  std_logic_vector (63 downto 0);
 signal s_reg2_out :  std_logic_vector (63 downto 0);
 signal s_reg3_out :  std_logic_vector (63 downto 0);
@@ -163,7 +165,8 @@ begin
            MU_in => s_MUL_out,
            --Outputs
            RAM_out => RAM_out,
-           ready_to_start => ready_to_start
+           ready_to_start => ready_to_start,
+           write_file  => write_file
            
     );
 end Behavioral;

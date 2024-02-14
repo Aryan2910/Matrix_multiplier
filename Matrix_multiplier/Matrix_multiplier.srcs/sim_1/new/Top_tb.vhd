@@ -51,8 +51,9 @@ signal input : std_logic_vector (7 downto 0) := "00000000";
 signal ready : std_logic := '0';
 signal RAM_out : std_logic_vector (8 downto 0);
 signal ready_to_start : std_logic;
+signal write_file : std_logic;
 signal count, count_next : std_logic_vector (5 downto 0);
-signal flag : std_logic;
+signal write_count, write_count_next : std_logic_vector (5 downto 0);
 --states
 type state_type is (state_idle, state_read, state_wait, state_write);
 signal state_reg, state_next : state_type;
@@ -63,7 +64,8 @@ signal state_reg, state_next : state_type;
            ready : in STD_LOGIC;
            input : in STD_LOGIC_VECTOR (7 downto 0);
            RAM_out : out STD_LOGIC_VECTOR (8 downto 0);
-           ready_to_start : out STD_LOGIC);
+           ready_to_start : out STD_LOGIC;
+           write_file : out std_logic);
            
            end component;
 begin
@@ -77,7 +79,8 @@ begin
         input => input,
         ready => ready,
         RAM_out => RAM_out,
-        ready_to_start => ready_to_start   
+        ready_to_start => ready_to_start,
+        write_file => write_file   
     );
     
     sequential : process (clk, reset) begin
@@ -95,20 +98,21 @@ begin
 
 
     
-    Behavioral : process (count, state_reg, ready_to_start,flag)
+    Behavioral : process (count, state_reg, ready_to_start,write_file)
     
                 variable v_ILINE : line;  --Input line
                 variable v_OLINE : line;  --Output line
                 variable variable_input : std_logic_vector (7 downto 0);
                 variable variable_output : std_logic_vector (17 downto 0);
-                
+                file input_file : text open read_mode is "/h/dk/f/ar4013si-s/ICP_VP1/Matrix_nmultiplier_work/Matrix_multiplier/Stimuli files/input_stimuli.txt"; 
+                file output_file : text open write_mode is "/h/dk/f/ar4013si-s/ICP_VP1/Matrix_nmultiplier_work/Matrix_multiplier/Stimuli files/output_stimuli_tb.txt"; 
+                variable flag : boolean; 
     begin
 
-        file_open(input_file, "/h/dk/f/ar4013si-s/ICP_VP1/Matrix_nmultiplier_work/Matrix_multiplier/Stimuli files/input_stimuli.txt", READ_MODE);    
-        file_open (output_file, "/h/dk/f/ar4013si-s/ICP_VP1/Matrix_nmultiplier_work/Matrix_multiplier/Stimuli files/output_stimuli_tb.txt", WRITE_MODE);            
+           
         count_next <= count;
         state_next <= state_reg;
-        flag <= '0';
+        flag := False;
         
         
             case state_reg is 
@@ -117,6 +121,7 @@ begin
                     state_next <= state_read;
                     ready <= '1';
                 when state_read =>
+                if (not endfile (input_file )) then
                 if count = "100000" then
                     state_next <= state_wait;
                 else
@@ -127,26 +132,31 @@ begin
                 count_next <= count + 1;
                 state_next <= state_read;
                 end if;
+                else state_next <= state_wait;
+                end if;
                 when state_wait =>
-                if ready_to_start = '1' then 
+                if write_file = '1' then 
                     state_next <= state_write;
                     else 
                     state_next <= state_wait;
                     end if;
                 when state_write => 
-                    write (v_OLINE, RAM_out);    
-                if flag = '0' then
-                    flag <= '1';
+                  if (not endfile (output_file)) then
+                    if ready_to_start = '1' then
+                    state_next <= state_idle;
                     else
-                    flag <= '0';
-                    writeline (output_file, v_OLINE);
-                    
-                    end if;     
+                    write (v_OLINE, RAM_out);
+                        if flag = FALSE  then
+                            flag := TRUE;
+                            else
+                            flag := FALSE;
+                            writeline (output_file, v_OLINE);
+                        end if;    
+                    end if;
+                end if;
                 end case;
 
-       
-       file_close (input_file);
-       file_close (output_file);
+   
        
     
             

@@ -20,7 +20,8 @@ entity RAM_controller is
            read_ram : in std_logic;
            MU_in : in STD_LOGIC_VECTOR (287 downto 0);
            RAM_out : out STD_LOGIC_VECTOR (8 downto 0);
-           ready_to_start : out std_logic);
+           ready_to_start : out std_logic;
+           write_file : out std_logic);
            
 end RAM_controller;
 
@@ -111,7 +112,7 @@ distribute_count_next <= distribute_count;
 --For output
 mu_next <= mu;                     
 ready_to_start <= '0';   
-
+write_file <= '0';
     if read_ram = '1' then    
       --CASE  
         case state_reg is 
@@ -139,7 +140,8 @@ ready_to_start <= '0';
                     state_next <= s_write;
             when s_write =>
                     if address_write_count = "00010000" then 
-                        state_next <= s_read;    
+                        state_next <= s_read;
+                        write_file <= '1';    
                         else
                         state_next <= s_shift_input;
                         write_enable <= '0';                   --should we add wr_en = 0 in both the states?
@@ -154,6 +156,8 @@ ready_to_start <= '0';
                         state_next <= s_read;
                         read_count_next <= read_count + 1;
                     elsif read_count = "01" then 
+                        
+                        
                         address  <= std_logic_vector (address_read_count);
                         if distribute_count = "00" then 
                         distribute_count_next <= distribute_count + 1;

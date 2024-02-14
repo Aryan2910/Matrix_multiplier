@@ -44,7 +44,7 @@ signal dataROM : std_logic_vector (13 downto 0);
 signal s_MU_out, s_MU_out_next : std_logic_vector (287 downto 0);
 
 --Count
-signal count_mul, count_mul_next: std_logic_vector (2 downto 0);
+signal count_mul, count_mul_next: std_logic_vector (3 downto 0);
 signal count_coeff, count_coeff_next: std_logic_vector (1 downto 0);
 signal count_col, count_col_next : std_logic_vector (2 downto 0);
 signal coeff, coeff_next : std_logic_vector (6 downto 0);
@@ -87,9 +87,9 @@ sequential: process (clk,reset) begin
              
             else
             mu1 <= mu1_next;
-            mu2 <= mu1_next;
-            mu3 <= mu1_next;
-            mu4 <= mu1_next;
+            mu2 <= mu2_next;
+            mu3 <= mu3_next;
+            mu4 <= mu4_next;
             count_col <= count_col_next;
             count_mul <= count_mul_next;
             count_coeff <= count_coeff_next;
@@ -110,7 +110,9 @@ end process;
 
 
 
-combinational: process (mul_en,state_reg, state_next, count_mul, s_reg1, s_reg2, s_reg3, s_reg4, sig_sreg1, sig_sreg2, sig_sreg3, sig_sreg4,count_col) begin
+combinational: process (mul_en,state_reg, state_next, count_mul, s_reg1, s_reg2, s_reg3, s_reg4, sig_sreg1, 
+sig_sreg2, sig_sreg3, sig_sreg4,count_col, mu1, mu2, mu3, mu4, dataROM, coeff  ) 
+begin
 mu1_next <= mu1;
 mu2_next <= mu2;
 mu3_next <= mu3;
@@ -144,22 +146,22 @@ s_MU_out_next <= s_MU_out;
                 end if;
             when select_coeff =>
                 if count_mul(0) = '1' then
-                    coeff_next <= dataRom(13 downto 7);
+                    coeff_next <= dataROM(6 downto 0);
                     --next_address <= address + 1; -- why is the address updating here?
                     state_next <= multiply;
                     
                 else
-                    coeff_next <= dataRom(6 downto 0);
+                    coeff_next <= dataROM(13 downto 7);
                     --next_address <= address + 1;
                     state_next <= multiply;
                 end if;
                 
             when multiply =>
                 
-                mu1_next <= coeff_next * sig_sreg1(63 downto 56) + mu1;
-                mu2_next <= coeff_next * sig_sreg2(63 downto 56) + mu2;
-                mu3_next <= coeff_next * sig_sreg3(63 downto 56) + mu3;
-                mu4_next <= coeff_next * sig_sreg4(63 downto 56) + mu4;
+                mu1_next <= coeff * sig_sreg1(63 downto 56) + mu1;
+                mu2_next <= coeff * sig_sreg2(63 downto 56) + mu2;
+                mu3_next <= coeff * sig_sreg3(63 downto 56) + mu3;
+                mu4_next <= coeff * sig_sreg4(63 downto 56) + mu4;
                  
                 count_mul_next <= count_mul + 1;
                 count_coeff_next <= count_coeff + 1;
@@ -172,7 +174,7 @@ s_MU_out_next <= s_MU_out;
                 state_next <= state_shift;
                                 
             when state_shift =>
-                    if count_mul = "111" then 
+                    if count_mul = "1000" then   --Counting till 8 since we were skipping a clock cycle 
                         
                         
                         if count_col = "000" then
