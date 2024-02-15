@@ -64,7 +64,7 @@ signal state_reg, state_next : state_type;
            ready : in STD_LOGIC;
            input : in STD_LOGIC_VECTOR (7 downto 0);
            RAM_out : out STD_LOGIC_VECTOR (8 downto 0);
-           ready_to_start : out STD_LOGIC;
+           ready_to_start : inout STD_LOGIC;
            write_file : out std_logic);
            
            end component;
@@ -124,6 +124,7 @@ begin
                 if (not endfile (input_file )) then
                 if count = "100000" then
                     state_next <= state_wait;
+                    count_next <= "000000";
                 else
                 ready <= '0';
                 readline (input_file, v_ILINE);
@@ -141,7 +142,7 @@ begin
                     state_next <= state_wait;
                     end if;
                 when state_write => 
-                  if (not endfile (output_file)) then
+                  
                     if ready_to_start = '1' then
                     state_next <= state_idle;
                     else
@@ -153,7 +154,6 @@ begin
                             writeline (output_file, v_OLINE);
                         end if;    
                     end if;
-                end if;
                 end case;
 
    

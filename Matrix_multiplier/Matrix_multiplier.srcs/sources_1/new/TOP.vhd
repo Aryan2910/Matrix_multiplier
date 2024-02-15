@@ -39,7 +39,7 @@ entity TOP is
         ready : in std_logic;
         input : in std_logic_vector (7 downto 0);
         RAM_out : out std_logic_vector (8 downto 0);
-        ready_to_start : out std_logic;
+        ready_to_start : inout std_logic;
         write_file : out std_logic                     --Used to write it in the output file 
         );
         
@@ -56,7 +56,7 @@ component Controller
            input : in STD_LOGIC_VECTOR (7 downto 0);
            load : in std_logic;
            ready : in std_logic;
-           
+           ready_to_start : in std_logic;
            -- output logoc for trigger 
            
            mul_en : out std_logic; --output that triggers multiplier unit
@@ -97,6 +97,7 @@ component RAM_controller
            reset : in STD_LOGIC;
            read_ram : in std_logic;
            MU_in : in STD_LOGIC_VECTOR (287 downto 0);
+           
            --Outputs
            RAM_out : out STD_LOGIC_VECTOR (8 downto 0);
            ready_to_start : out std_logic;
@@ -126,7 +127,8 @@ begin
            input => input,
            load => s_load,
            ready => ready,
-           -- output logoc for trigger 
+           ready_to_start => ready_to_start,
+           -- output logic for trigger 
            
            mul_en => s_mul_en, --output that triggers multiplier unit
            read_ram => s_read_ram, -- output that triggers the RAM

@@ -163,8 +163,8 @@ s_MU_out_next <= s_MU_out;
                 mu3_next <= coeff * sig_sreg3(63 downto 56) + mu3;
                 mu4_next <= coeff * sig_sreg4(63 downto 56) + mu4;
                  
-                count_mul_next <= count_mul + 1;
-                count_coeff_next <= count_coeff + 1;
+                count_mul_next <= count_mul + 1;                                                    --Count mul 
+                count_coeff_next <= count_coeff + 1;                                                --Count coeff
                 if count_coeff = "01" then
                     next_address <= address + 1;
                     count_coeff_next <= "00";
@@ -175,7 +175,7 @@ s_MU_out_next <= s_MU_out;
                                 
             when state_shift =>
                     if count_mul = "1000" then   --Counting till 8 since we were skipping a clock cycle 
-                        
+                        count_mul_next <= "0000";     --Count_mul reset //Added new
                         
                         if count_col = "000" then
                             s_MU_out_next <= s_MU_out (215 downto 0) & mu1_next & mu2_next & mu3_next & mu4_next;

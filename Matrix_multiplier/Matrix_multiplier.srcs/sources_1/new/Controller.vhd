@@ -31,6 +31,7 @@ entity Controller is
            input : in STD_LOGIC_VECTOR (7 downto 0);
            load : in std_logic;
            ready : in std_logic;
+           ready_to_start : in std_logic;            --Added new
            
            -- output logoc for trigger 
            
@@ -65,7 +66,7 @@ signal s_reg4_next : std_logic_vector (63 downto 0);
 
 --one bit signal
 signal mul_en_prev, mul_en_next : std_logic := '0';
-signal read_ram_prev, read_ram_next : std_logic := '0';     
+--signal read_ram_prev, read_ram_next : std_logic := '0';     
     
     
 --states
@@ -87,7 +88,7 @@ Sequential: process(clk, reset)
                     s_reg3 <= (others => '0');
                     s_reg4 <= (others => '0');
                     state_reg <= state_idle;
-                    read_ram_prev <= '0';
+                    --read_ram_prev <= '0';
                     mul_en_prev <= '0';
                     
                else
@@ -100,14 +101,14 @@ Sequential: process(clk, reset)
                     s_reg4 <= s_reg4_next;
                     state_reg <= state_next;
                     mul_en_prev <= mul_en_next;
-                    read_ram_prev <= read_ram_next;
+                    --read_ram_prev <= read_ram_next;
                 end if;
             end if;
 end process;
 
 
   
-Shifting: process(shift_count,state_reg,s_reg1,s_reg2,s_reg3,s_reg4,count, mul_en_prev, mul_en_next,load, read_ram_next, read_ram_prev,ready)
+Shifting: process(shift_count,state_reg,s_reg1,s_reg2,s_reg3,s_reg4,count, mul_en_prev, mul_en_next,load)
 begin
             --stating initial conditions(to aavoid latches)
             state_next <= state_reg;
@@ -118,22 +119,25 @@ begin
             shift_count_next <= shift_count;
             count_next <= count;
             mul_en_next <= mul_en_prev;
-            read_ram_next <= read_ram_prev;
+           -- read_ram_next <= read_ram_prev;
             mul_en <= '0';
             read_ram <= '0';
             
             
             --FSM
             case state_reg is 
+                --Idle
                 when state_idle =>
                   if ready = '1' then
                   state_next <= state_shifting;
                   else
                   state_next <= state_idle;
                   end if;   
+                
+                --Shfiting
                 when state_shifting =>
                 if count = "100000" then
-
+                  count_next <= "000000";                                    --putting count to 0 //Added new
                   state_next <= state_multiply;
                 else
                     if shift_count = "000" then 
@@ -173,10 +177,14 @@ begin
                     state_next <= state_load;            
                 end if;
              when state_load => 
-                read_ram_next <= '1';
-                
+                if ready_to_start  = '1' then
+                    state_next <= state_idle;
+                    read_ram <= '0';               
+                else
+                  --read_ram_next <= '1';
                   read_ram <= '1';
-                      
+                  state_next <= state_load;
+                end if;      
                         --Insert how ram can be initiated      
             end case;     
 end process;

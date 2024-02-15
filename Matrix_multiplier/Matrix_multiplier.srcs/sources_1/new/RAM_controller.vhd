@@ -29,7 +29,7 @@ architecture Behavioral of RAM_controller is
 --states
 type state_type is (s_idle,s_shift_input, s_write, s_read);
 signal state_reg, state_next : state_type;
---signal
+--signal 
 signal data_in, data_out : std_logic_vector (31 downto 0);
 signal address_write_count, address_write_count_next : std_logic_vector (7 downto 0);
 signal address_read_count, address_read_count_next : std_logic_vector (7 downto 0);
@@ -112,7 +112,7 @@ distribute_count_next <= distribute_count;
 --For output
 mu_next <= mu;                     
 ready_to_start <= '0';   
-write_file <= '0';
+write_file <= '0';                                      --Write File used to start writing at output_file_tb.txt
     if read_ram = '1' then    
       --CASE  
         case state_reg is 
@@ -136,13 +136,16 @@ write_file <= '0';
             
             when s_shift_input =>
                     s_mu_in_next <= s_mu_in (269 downto 0) & s_mu_in (287 downto 270);
-                    
                     state_next <= s_write;
             when s_write =>
-                    if address_write_count = "00010000" then 
+--                    if address_write_count = "00010000" then 
+--                        state_next <= s_read;
+--                        write_file <= '1';
+--                        address_write_count_next <= "00000000";    
+--                        else                        
+                    if address_write_count = "01010000" then 
                         state_next <= s_read;
-                        write_file <= '1';    
-                        else
+                        else 
                         state_next <= s_shift_input;
                         write_enable <= '0';                   --should we add wr_en = 0 in both the states?
                         data_in <= "00000000000000" & s_mu_in (287 downto 270);
@@ -175,7 +178,7 @@ write_file <= '0';
                         state_next <= s_read;                                      
                     elsif read_count = "10" then    
                         address  <= std_logic_vector (address_read_count);
-                        if address_read_count = "00010000" then  
+                        if address_read_count = "01010000" then  
                                 read_count_next <= "00";
                                 ready_to_start <= '1';
                                 state_next <= s_write;
