@@ -1,1 +1,10 @@
 Time resolution is 1 ps
+ram_test.uut.wrapper.DUT_ST_SPHDL_160x32_mem2011  INFORMATION
+***************************************
+The Model is Operating in TIMING MODE
+Please make sure that SDF is properly annotated otherwise dummy values will be used
+                 All Messages are Switched ON
+***************************************
+Configurable Fault Functionality is OFF
+***************************************
+ram_test.uut.wrapper.DUT_ST_SPHDL_160x32_mem2011.ST_SPHDL_160x32m8_L_maininst.ReadCycle - 5.00 ns (MSG_ID 008) WARNING: Read Port:  Illegal Value on Address Bus. Memory and Output Corrupted 

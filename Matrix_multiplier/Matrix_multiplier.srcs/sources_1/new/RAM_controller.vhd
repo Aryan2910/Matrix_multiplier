@@ -21,7 +21,8 @@ entity RAM_controller is
            MU_in : in STD_LOGIC_VECTOR (287 downto 0);
            RAM_out : out STD_LOGIC_VECTOR (8 downto 0);
            ready_to_start : out std_logic;
-           write_file : out std_logic);
+           write_done : out std_logic
+);
            
 end RAM_controller;
 
@@ -44,6 +45,7 @@ signal mu_next : std_logic_vector (8 downto 0);
 signal write_enable : std_logic;
 signal RY : std_logic;
 signal S_HIGH: std_logic_vector(17 downto 0);
+--signal write_prev, write_next: std_logic;
 --Constant
 constant LOW: std_logic := '0';
 
@@ -85,6 +87,7 @@ sequential: process (clk, reset) begin
                 mu <= (others => '0');
                 s_mu_in <= (others => '0');
                 distribute_count <= (others => '0');
+                --write_prev <= '0';
             else 
                 address_write_count <= address_write_count_next;
                 address_read_count <= address_read_count_next;
@@ -94,6 +97,7 @@ sequential: process (clk, reset) begin
                 s_mu_in  <= s_mu_in_next;
                 distribute_count <= distribute_count_next;
                 
+               -- write_prev <= write_next;
             end if;
         end if;
 end process;
@@ -111,8 +115,9 @@ s_mu_in_next <= s_mu_in;
 distribute_count_next <= distribute_count;
 --For output
 mu_next <= mu;                     
-ready_to_start <= '0';   
-write_file <= '0';                                      --Write File used to start writing at output_file_tb.txt
+ready_to_start <= '0'; 
+write_done <= '0';  
+
     if read_ram = '1' then    
       --CASE  
         case state_reg is 
@@ -123,7 +128,7 @@ write_file <= '0';                                      --Write File used to sta
                 data_in <= (others => '0');
                 address_write_count_next <= address_write_count + 1;
                 
-                  if address_write_count = "00010000" then
+                  if address_write_count = "01010000" then
                     s_mu_in_next <= MU_in;                                        --Taking original value
                     address_write_count_next <= (others => '0');
                     state_next <= s_write;
@@ -137,20 +142,24 @@ write_file <= '0';                                      --Write File used to sta
             when s_shift_input =>
                     s_mu_in_next <= s_mu_in (269 downto 0) & s_mu_in (287 downto 270);
                     state_next <= s_write;
-            when s_write =>
---                    if address_write_count = "00010000" then 
---                        state_next <= s_read;
---                        write_file <= '1';
---                        address_write_count_next <= "00000000";    
---                        else                        
+            
+            when s_write =>                     
+                    
                     if address_write_count = "01010000" then 
-                        state_next <= s_read;
-                        else 
+                        state_next <= s_read;                 --Switched to next state
+                    else
                         state_next <= s_shift_input;
                         write_enable <= '0';                   --should we add wr_en = 0 in both the states?
                         data_in <= "00000000000000" & s_mu_in (287 downto 270);
                         S_HIGH <= s_mu_in(287 downto 270);
                         address_write_count_next <= address_write_count + 1;
+                        if address_write_count = "00010000" then 
+                            write_done <= '1';  
+                        elsif address_write_count = "00100000" then
+                            write_done <= '1';
+                        elsif address_write_count = "01000000" then
+                            write_done <= '1';
+                        end if;
                     end if;
                     
             when s_read =>
