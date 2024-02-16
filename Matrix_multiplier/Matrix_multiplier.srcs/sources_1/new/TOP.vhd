@@ -39,8 +39,9 @@ entity TOP is
         ready : in std_logic;
         input : in std_logic_vector (7 downto 0);
         RAM_out : out std_logic_vector (8 downto 0);
+        write_done : inout std_logic;
         ready_to_start : inout std_logic;
-        write_file : out std_logic                     --Used to write it in the output file 
+        fini : inout std_logic
         );
         
 end TOP;
@@ -56,9 +57,10 @@ component Controller
            input : in STD_LOGIC_VECTOR (7 downto 0);
            load : in std_logic;
            ready : in std_logic;
-           ready_to_start : in std_logic;
+           
            -- output logoc for trigger 
            
+           write_done : in std_logic; --Input that comes from ram
            mul_en : out std_logic; --output that triggers multiplier unit
            read_ram : out std_logic; -- output that triggers the RAM
            
@@ -100,17 +102,18 @@ component RAM_controller
            
            --Outputs
            RAM_out : out STD_LOGIC_VECTOR (8 downto 0);
+           write_done: out std_logic;
            ready_to_start : out std_logic;
-           write_file : out std_logic
+           fini : out std_logic
            
         
     );
     end component;    
 -- signals used to link all the modules
 signal s_load : std_logic;
+signal s_write_done : std_logic;
 signal s_mul_en : std_logic;
 signal s_read_ram : std_logic;
-signal s_write_file : std_logic;
 signal s_reg1_out :  std_logic_vector (63 downto 0);
 signal s_reg2_out :  std_logic_vector (63 downto 0);
 signal s_reg3_out :  std_logic_vector (63 downto 0);
@@ -127,7 +130,7 @@ begin
            input => input,
            load => s_load,
            ready => ready,
-           ready_to_start => ready_to_start,
+           write_done => write_done,
            -- output logic for trigger 
            
            mul_en => s_mul_en, --output that triggers multiplier unit
@@ -165,10 +168,11 @@ begin
            reset => reset,
            read_ram => s_read_ram,
            MU_in => s_MUL_out,
+           write_done => write_done,
            --Outputs
            RAM_out => RAM_out,
            ready_to_start => ready_to_start,
-           write_file  => write_file
+           fini => fini
            
     );
 end Behavioral;

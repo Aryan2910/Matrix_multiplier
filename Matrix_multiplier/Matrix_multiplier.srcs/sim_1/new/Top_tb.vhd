@@ -51,9 +51,9 @@ signal input : std_logic_vector (7 downto 0) := "00000000";
 signal ready : std_logic := '0';
 signal RAM_out : std_logic_vector (8 downto 0);
 signal ready_to_start : std_logic;
-signal write_file : std_logic;
+signal fini: std_logic;
+signal write_done : std_logic;
 signal count, count_next : std_logic_vector (5 downto 0);
-signal write_count, write_count_next : std_logic_vector (5 downto 0);
 --states
 type state_type is (state_idle, state_read, state_wait, state_write);
 signal state_reg, state_next : state_type;
@@ -64,8 +64,10 @@ signal state_reg, state_next : state_type;
            ready : in STD_LOGIC;
            input : in STD_LOGIC_VECTOR (7 downto 0);
            RAM_out : out STD_LOGIC_VECTOR (8 downto 0);
+           write_done : inout std_logic;
            ready_to_start : inout STD_LOGIC;
-           write_file : out std_logic);
+           fini : inout STD_LOGIC
+           );
            
            end component;
 begin
@@ -80,7 +82,9 @@ begin
         ready => ready,
         RAM_out => RAM_out,
         ready_to_start => ready_to_start,
-        write_file => write_file   
+        write_done  => write_done,
+        fini => fini
+           
     );
     
     sequential : process (clk, reset) begin
@@ -98,7 +102,7 @@ begin
 
 
     
-    Behavioral : process (count, state_reg, ready_to_start,write_file)
+    Behavioral : process (count, state_reg, ready_to_start, fini)
     
                 variable v_ILINE : line;  --Input line
                 variable v_OLINE : line;  --Output line
@@ -136,14 +140,16 @@ begin
                 else state_next <= state_wait;
                 end if;
                 when state_wait =>
-                if write_file = '1' then 
+                if ready_to_start  = '1' then 
                     state_next <= state_write;
-                    else 
+                elsif write_done = '1' then 
+                    state_next <= state_read;
+                else
                     state_next <= state_wait;
                     end if;
                 when state_write => 
                   
-                    if ready_to_start = '1' then
+                    if fini = '1' then
                     state_next <= state_idle;
                     else
                     write (v_OLINE, RAM_out);

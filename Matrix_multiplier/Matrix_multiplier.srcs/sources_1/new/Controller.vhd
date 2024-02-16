@@ -31,7 +31,7 @@ entity Controller is
            input : in STD_LOGIC_VECTOR (7 downto 0);
            load : in std_logic;
            ready : in std_logic;
-           ready_to_start : in std_logic;            --Added new
+           write_done : in std_logic;            --From RAM
            
            -- output logoc for trigger 
            
@@ -108,7 +108,7 @@ end process;
 
 
   
-Shifting: process(shift_count,state_reg,s_reg1,s_reg2,s_reg3,s_reg4,count, mul_en_prev, mul_en_next,load)
+Shifting: process(shift_count,state_reg,s_reg1,s_reg2,s_reg3,s_reg4,count, mul_en_prev, mul_en_next,load, write_done)
 begin
             --stating initial conditions(to aavoid latches)
             state_next <= state_reg;
@@ -177,15 +177,13 @@ begin
                     state_next <= state_load;            
                 end if;
              when state_load => 
-                if ready_to_start  = '1' then
-                    state_next <= state_idle;
+                if write_done  = '1' then
+                    state_next <= state_shifting;
                     read_ram <= '0';               
                 else
-                  --read_ram_next <= '1';
                   read_ram <= '1';
                   state_next <= state_load;
-                end if;      
-                        --Insert how ram can be initiated      
+                end if;          
             end case;     
 end process;
        s_reg1_out <= s_reg1;   
