@@ -123,6 +123,8 @@ signal s_MUL_out :  std_logic_vector (287 downto 0);
 --signal that come from one module and go in the other module
 begin
 --Port maps
+write_done <= s_write_done;
+
     controller_use : Controller 
     port map (
            clk => clk,
@@ -130,7 +132,7 @@ begin
            input => input,
            load => s_load,
            ready => ready,
-           write_done => write_done,
+           write_done => s_write_done,
            -- output logic for trigger 
            
            mul_en => s_mul_en, --output that triggers multiplier unit
@@ -168,7 +170,7 @@ begin
            reset => reset,
            read_ram => s_read_ram,
            MU_in => s_MUL_out,
-           write_done => write_done,
+           write_done => s_write_done,
            --Outputs
            RAM_out => RAM_out,
            ready_to_start => ready_to_start,

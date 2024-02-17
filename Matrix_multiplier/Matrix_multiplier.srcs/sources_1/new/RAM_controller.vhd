@@ -29,7 +29,7 @@ end RAM_controller;
 
 architecture Behavioral of RAM_controller is
 --states
-type state_type is (s_idle,s_shift_input, s_write, s_read);
+type state_type is (s_idle,s_clear,s_shift_input, s_write, s_read);
 signal state_reg, state_next : state_type;
 --signal 
 signal data_in, data_out : std_logic_vector (31 downto 0);
@@ -39,6 +39,7 @@ signal address : std_logic_vector (7 downto 0);
 signal read_count, read_count_next : std_logic_vector (1 downto 0);
 signal distribute_count, distribute_count_next : std_logic_vector (1 downto 0);
 signal write_count, write_count_next : std_logic_vector (4 downto 0);
+
 --shift signal
 signal s_mu_in, s_mu_in_next : std_logic_vector (287 downto 0);
 signal mu : std_logic_vector (8 downto 0);
@@ -49,6 +50,7 @@ signal RY : std_logic;
 signal S_HIGH: std_logic_vector(17 downto 0);
 signal fini_prev, fini_next: std_logic;
 signal ready_prev, ready_next: std_logic;
+signal escape_clear : std_logic := '0';
 --Constant
 constant LOW: std_logic := '0';
 
@@ -109,7 +111,7 @@ sequential: process (clk, reset) begin
         end if;
 end process;
     
-behavior: process (state_reg, state_next, write_enable, read_count, read_ram, address_read_count,  address_write_count, RY,MU_in, s_mu_in, distribute_count, write_count, fini_next ,fini_prev, ready_next ,ready_prev) begin --, MU_1_in, MU_2_in, MU_3_in, MU_4_in
+behavior: process (state_reg, state_next, write_enable, read_count, read_ram, address_read_count,  address_write_count, RY,MU_in, s_mu_in, distribute_count, write_count, fini_next ,fini_prev, ready_next ,ready_prev, escape_clear) begin --, MU_1_in, MU_2_in, MU_3_in, MU_4_in
 --Default 
 address_write_count_next <= address_write_count;
 address_read_count_next <= address_read_count;
@@ -128,23 +130,34 @@ mu_next <= mu;
 ready_to_start <= '0';                     
 write_done <= '0';  
 fini <= '0';
-
-    if read_ram = '1' then    
+ 
       --CASE  
         case state_reg is 
             
             when s_idle =>
+                if read_ram = '1' then
+                    s_mu_in_next <= MU_in;                                        --Taking original value
+                    if escape_clear = '1' then
+                        state_next <= s_write;
+                    elsif escape_clear = '0' then
+                        state_next <= s_clear;
+                    else
+                        state_next <= s_idle;
+                    end if;
+                end if;
+            when s_clear =>
              
                if write_enable = '1' then
                 data_in <= (others => '0');
                 address_write_count_next <= address_write_count + 1;
                 
                   if address_write_count = "01010000" then
-                    s_mu_in_next <= MU_in;                                        --Taking original value
+                    
                     address_write_count_next <= (others => '0');
                     state_next <= s_write;
+                    escape_clear <= '1';
                   else
-                   state_next <= s_idle;
+                   state_next <= s_clear;
                    end if; 
                 end if;
                 
@@ -159,22 +172,20 @@ fini <= '0';
                                     --Switched to next state
                     if address_write_count = "01010000" then 
                         state_next <= s_read;                 --Switched to next state
-                    else
-                        state_next <= s_shift_input;
-                        write_enable <= '0';                   --should we add wr_en = 0 in both the states?
-                        data_in <= "00000000000000" & s_mu_in (287 downto 270);
-                        S_HIGH <= s_mu_in(287 downto 270);
-                        address_write_count_next <= address_write_count + 1;
-                        write_count_next <= write_count + 1;
-                        
-                        if write_count = "01111" then
+                    elsif write_count = "10000" then
                             write_count_next <= "00000";
                             write_done <= '1';
-                        else
+                            state_next <= s_idle;
+                    else
                             write_done <= '0';
+                            state_next <= s_shift_input;
+                            write_enable <= '0';                   --should we add wr_en = 0 in both the states?
+                            data_in <= "00000000000000" & s_mu_in (287 downto 270);
+                            S_HIGH <= s_mu_in(287 downto 270);
+                            address_write_count_next <= address_write_count + 1;
+                            write_count_next <= write_count + 1;
                         end if;
-
-                    end if;   
+   
             when s_read =>
                     
                     if read_count = "00" then
@@ -214,7 +225,7 @@ fini <= '0';
                                     else 
                                     fini <= '0';
                                 end if;
-                                state_next <= s_write;
+                                state_next <= s_idle;
                             else
                                 address_read_count_next <= address_read_count + 1;
                                 read_count_next <= "00";
@@ -223,7 +234,7 @@ fini <= '0';
                             end if;
                     end if;           
             end case;
-        end if;  
+         
 end process;    
 
 --Taking outputs

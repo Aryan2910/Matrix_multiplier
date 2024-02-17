@@ -54,7 +54,7 @@ signal address_out: std_logic_vector (3 downto 0);
 signal load_next : std_logic;
 
 --state
-type state_type is (state_load, select_coeff, multiply, state_shift, state_ram);
+type state_type is (state_load, select_coeff, clear_mu, multiply, state_shift, state_ram);
 signal state_reg, state_next : state_type;
 BEGIN
 --Port map    
@@ -140,10 +140,17 @@ s_MU_out_next <= s_MU_out;
                 sig_sreg2_next <= s_reg2;
                 sig_sreg3_next <= s_reg3;
                 sig_sreg4_next <= s_reg4;
-                state_next <= select_coeff;
+                state_next <= clear_mu;
                 else
                 state_next <= state_load ;
                 end if;
+            when clear_mu => 
+                           mu1_next <= (others => '0');
+                           mu2_next <= (others => '0');
+                           mu3_next <= (others => '0');
+                           mu4_next <= (others => '0');
+                           state_next <= select_coeff;
+            
             when select_coeff =>
                 if count_mul(0) = '1' then
                     coeff_next <= dataROM(6 downto 0);
@@ -155,7 +162,7 @@ s_MU_out_next <= s_MU_out;
                     --next_address <= address + 1;
                     state_next <= multiply;
                 end if;
-                
+             
             when multiply =>
                 
                 mu1_next <= coeff * sig_sreg1(63 downto 56) + mu1;
@@ -176,19 +183,23 @@ s_MU_out_next <= s_MU_out;
             when state_shift =>
                     if count_mul = "1000" then   --Counting till 8 since we were skipping a clock cycle 
                         count_mul_next <= "0000";     --Count_mul reset //Added new
+                        sig_sreg1_next <= sig_sreg1(55 downto 0) & sig_sreg1(63 downto 56);
+                        sig_sreg2_next <= sig_sreg2(55 downto 0) & sig_sreg2(63 downto 56);
+                        sig_sreg3_next <= sig_sreg3(55 downto 0) & sig_sreg3(63 downto 56);
+                        sig_sreg4_next <= sig_sreg4(55 downto 0) & sig_sreg4(63 downto 56);
                         
                         if count_col = "000" then
                             s_MU_out_next <= s_MU_out (215 downto 0) & mu1_next & mu2_next & mu3_next & mu4_next;
                             count_col_next <= count_col + 1; -- 
-                            state_next <= select_coeff; 
+                            state_next <= clear_mu; 
                             elsif count_col = "001" then  
                             s_MU_out_next <= s_MU_out (215 downto 0) & mu1_next & mu2_next & mu3_next & mu4_next;
                             count_col_next <= count_col + 1;
-                            state_next <= select_coeff; 
+                            state_next <= clear_mu; 
                             elsif count_col = "010" then 
                             s_MU_out_next <= s_MU_out (215 downto 0) & mu1_next & mu2_next & mu3_next & mu4_next;
                             count_col_next <= count_col + 1;
-                            state_next <= select_coeff; 
+                            state_next <= clear_mu; 
                             elsif count_col = "011" then 
                             s_MU_out_next <= s_MU_out (215 downto 0) & mu1_next & mu2_next & mu3_next & mu4_next;
                             state_next <= state_ram; 
@@ -206,7 +217,8 @@ s_MU_out_next <= s_MU_out;
                     
              when state_ram => 
                            load_next <= '1';
-                                
+                           state_next <= state_load;
+                               
             end case;   
 end process;
 --Taking output 

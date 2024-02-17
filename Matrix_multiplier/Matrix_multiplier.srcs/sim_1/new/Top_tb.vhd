@@ -102,7 +102,7 @@ begin
 
 
     
-    Behavioral : process (count, state_reg, ready_to_start, fini)
+    Behavioral : process (count, state_reg, ready_to_start, fini, write_done)
     
                 variable v_ILINE : line;  --Input line
                 variable v_OLINE : line;  --Output line
@@ -124,29 +124,36 @@ begin
                 when state_idle =>
                     state_next <= state_read;
                     ready <= '1';
+                    
                 when state_read =>
                 if (not endfile (input_file )) then
-                if count = "100000" then
+                    if count = "100000" then
+                        state_next <= state_wait;
+                        count_next <= "000000";
+                    else
+                        ready <= '0';
+                        readline (input_file, v_ILINE);
+                        read (v_ILINE, variable_input);
+                        input <= variable_input;
+                        count_next <= count + 1;
+                        state_next <= state_read;
+                    end if;
+                else 
                     state_next <= state_wait;
-                    count_next <= "000000";
-                else
-                ready <= '0';
-                readline (input_file, v_ILINE);
-                read (v_ILINE, variable_input);
-                input <= variable_input;
-                count_next <= count + 1;
-                state_next <= state_read;
                 end if;
-                else state_next <= state_wait;
-                end if;
+                
+                
                 when state_wait =>
+                
                 if ready_to_start  = '1' then 
                     state_next <= state_write;
-                elsif write_done = '1' then 
-                    state_next <= state_read;
-                else
-                    state_next <= state_wait;
+               elsif write_done = '1' then 
+                    state_next <= state_idle;
+                --else
+                   -- state_next <= state_wait;
                     end if;
+                    
+                    
                 when state_write => 
                   
                     if fini = '1' then

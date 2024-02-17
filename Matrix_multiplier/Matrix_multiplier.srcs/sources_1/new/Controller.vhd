@@ -33,6 +33,7 @@ entity Controller is
            ready : in std_logic;
            write_done : in std_logic;            --From RAM
            
+           
            -- output logoc for trigger 
            
            mul_en : out std_logic; --output that triggers multiplier unit
@@ -42,8 +43,8 @@ entity Controller is
            s_reg1_out : out std_logic_vector (63 downto 0) := (others => '0');
            s_reg2_out : out std_logic_vector (63 downto 0) := (others => '0');
            s_reg3_out : out std_logic_vector (63 downto 0) := (others => '0');
-           s_reg4_out : out std_logic_vector (63 downto 0) := (others => '0')
-
+           s_reg4_out : out std_logic_vector (63 downto 0) := (others => '0');
+           read_tb : out std_logic            --TO TOP
            );
            
 end Controller;
@@ -62,11 +63,7 @@ signal s_reg2_next : std_logic_vector (63 downto 0);
 signal s_reg3 : std_logic_vector (63 downto 0);
 signal s_reg3_next : std_logic_vector (63 downto 0);
 signal s_reg4 : std_logic_vector (63 downto 0);    
-signal s_reg4_next : std_logic_vector (63 downto 0);
-
---one bit signal
-signal mul_en_prev, mul_en_next : std_logic := '0';
---signal read_ram_prev, read_ram_next : std_logic := '0';     
+signal s_reg4_next : std_logic_vector (63 downto 0); 
     
     
 --states
@@ -88,8 +85,6 @@ Sequential: process(clk, reset)
                     s_reg3 <= (others => '0');
                     s_reg4 <= (others => '0');
                     state_reg <= state_idle;
-                    --read_ram_prev <= '0';
-                    mul_en_prev <= '0';
                     
                else
 
@@ -100,15 +95,13 @@ Sequential: process(clk, reset)
                     s_reg3 <= s_reg3_next;
                     s_reg4 <= s_reg4_next;
                     state_reg <= state_next;
-                    mul_en_prev <= mul_en_next;
-                    --read_ram_prev <= read_ram_next;
                 end if;
             end if;
 end process;
 
 
   
-Shifting: process(shift_count,state_reg,s_reg1,s_reg2,s_reg3,s_reg4,count, mul_en_prev, mul_en_next,load, write_done)
+Shifting: process(shift_count,state_reg,s_reg1,s_reg2,s_reg3,s_reg4,count, load, write_done)
 begin
             --stating initial conditions(to aavoid latches)
             state_next <= state_reg;
@@ -118,11 +111,9 @@ begin
             s_reg4_next <= s_reg4;
             shift_count_next <= shift_count;
             count_next <= count;
-            mul_en_next <= mul_en_prev;
-           -- read_ram_next <= read_ram_prev;
             mul_en <= '0';
             read_ram <= '0';
-            
+            read_tb <= '0';
             
             --FSM
             case state_reg is 
@@ -130,6 +121,7 @@ begin
                 when state_idle =>
                   if ready = '1' then
                   state_next <= state_shifting;
+                  shift_count_next <= "000";
                   else
                   state_next <= state_idle;
                   end if;   
@@ -139,6 +131,7 @@ begin
                 if count = "100000" then
                   count_next <= "000000";                                    --putting count to 0 //Added new
                   state_next <= state_multiply;
+                  mul_en <= '1';
                 else
                     if shift_count = "000" then 
                         shift_count_next <= shift_count + 1;
@@ -166,22 +159,22 @@ begin
                   end if;
                        
              when state_multiply =>
-                mul_en_next <= '1';
-                if (mul_en_prev = '0' and mul_en_next = '1') then
-                  mul_en <= '1';
+                
+                  
                   state_next <= state_multiply;
-                else 
-                    mul_en <= '0';            
-                end if;
+                  mul_en <= '0'; 
+
                 if load = '1' then 
-                    state_next <= state_load;            
+                    state_next <= state_load;
+                    read_ram <= '1';            
                 end if;
              when state_load => 
                 if write_done  = '1' then
-                    state_next <= state_shifting;
+                    state_next <= state_idle;                   
+                    read_tb <= '1';
                     read_ram <= '0';               
                 else
-                  read_ram <= '1';
+                    read_ram <= '0';                       
                   state_next <= state_load;
                 end if;          
             end case;     
