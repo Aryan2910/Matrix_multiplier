@@ -20,7 +20,7 @@ entity RAM_controller is
            read_ram : in std_logic;
            MU_in : in STD_LOGIC_VECTOR (287 downto 0);
            RAM_out : out STD_LOGIC_VECTOR (8 downto 0);
-           ready_to_start : out std_logic;
+       --    ready_to_start : out std_logic;
            fini : out std_logic;
            write_done : out std_logic
 );
@@ -49,7 +49,7 @@ signal write_enable : std_logic;
 signal RY : std_logic;
 signal S_HIGH: std_logic_vector(17 downto 0);
 signal fini_prev, fini_next: std_logic;
-signal ready_prev, ready_next: std_logic;
+--signal ready_prev, ready_next: std_logic;
 signal escape_clear : std_logic := '0';
 --Constant
 constant LOW: std_logic := '0';
@@ -95,7 +95,7 @@ sequential: process (clk, reset) begin
                 distribute_count <= (others => '0');
                 write_count <= (others => '0');
                 fini_prev <= '0';
-                ready_prev <= '0';
+               -- ready_prev <= '0';
             else 
                 address_write_count <= address_write_count_next;
                 address_read_count <= address_read_count_next;
@@ -105,13 +105,13 @@ sequential: process (clk, reset) begin
                 s_mu_in  <= s_mu_in_next;
                 distribute_count <= distribute_count_next;
                 fini_prev <= fini_next;
-                ready_prev <= ready_next;
+              --  ready_prev <= ready_next;
                 write_count <= write_count_next;
             end if;
         end if;
 end process;
     
-behavior: process (state_reg, state_next, write_enable, read_count, read_ram, address_read_count,  address_write_count, RY,MU_in, s_mu_in, distribute_count, write_count, fini_next ,fini_prev, ready_next ,ready_prev, escape_clear) begin --, MU_1_in, MU_2_in, MU_3_in, MU_4_in
+behavior: process (state_reg, state_next, write_enable, read_count, read_ram, address_read_count,  address_write_count, RY,MU_in, s_mu_in, distribute_count, write_count, fini_next ,fini_prev, escape_clear) begin --, MU_1_in, MU_2_in, MU_3_in, MU_4_in
 --Default 
 address_write_count_next <= address_write_count;
 address_read_count_next <= address_read_count;
@@ -124,10 +124,10 @@ s_mu_in_next <= s_mu_in;
 distribute_count_next <= distribute_count;
 write_count_next <= write_count;
 fini_next  <= fini_prev;
-ready_next  <= ready_prev;
+--ready_next  <= ready_prev;
 --For output
 mu_next <= mu;
-ready_to_start <= '0';                     
+--ready_to_start <= '0';                     
 write_done <= '0';  
 fini <= '0';
  
@@ -202,12 +202,12 @@ fini <= '0';
                                 distribute_count_next <= distribute_count + 1;
                         
                         elsif distribute_count = "10" then
-                        ready_next  <= '1';
-                                if ready_prev  = '0' and ready_next = '1' then
-                                    ready_to_start <= '1';
-                                else
-                                    ready_to_start <= '0';
-                                end if;
+--                        ready_next  <= '1';
+--                                if ready_prev  = '0' and ready_next = '1' then
+--                                    ready_to_start <= '1';
+--                                else
+--                                    ready_to_start <= '0';
+                               -- end if;
                         distribute_count_next <= "00";
                         mu_next <= data_out(8 downto 0);
                         read_count_next <= read_count + 1; 

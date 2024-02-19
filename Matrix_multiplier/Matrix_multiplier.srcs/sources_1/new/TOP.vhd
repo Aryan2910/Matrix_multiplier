@@ -39,9 +39,9 @@ entity TOP is
         ready : in std_logic;
         input : in std_logic_vector (7 downto 0);
         RAM_out : out std_logic_vector (8 downto 0);
-        write_done : inout std_logic;
-        ready_to_start : inout std_logic;
-        fini : inout std_logic
+        write_done : out std_logic;
+     --   ready_to_start : inout std_logic;
+        fini : out std_logic
         );
         
 end TOP;
@@ -103,7 +103,7 @@ component RAM_controller
            --Outputs
            RAM_out : out STD_LOGIC_VECTOR (8 downto 0);
            write_done: out std_logic;
-           ready_to_start : out std_logic;
+      --     ready_to_start : out std_logic;
            fini : out std_logic
            
         
@@ -173,7 +173,7 @@ write_done <= s_write_done;
            write_done => s_write_done,
            --Outputs
            RAM_out => RAM_out,
-           ready_to_start => ready_to_start,
+       --    ready_to_start => ready_to_start,
            fini => fini
            
     );

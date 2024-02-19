@@ -133,23 +133,21 @@ begin
                   state_next <= state_multiply;
                   mul_en <= '1';
                 else
-                    if shift_count = "000" then 
-                        shift_count_next <= shift_count + 1;
-                    elsif shift_count = "001" then
+                    if shift_count = "000" then
                         count_next <= count + 1;
                         shift_count_next <= shift_count + 1;
                         s_reg1_next <= s_reg1(55 downto 0) & input;    
-                     elsif shift_count = "010" then
+                     elsif shift_count = "001" then
                         count_next <= count + 1;
                         shift_count_next <= shift_count + 1;
                         s_reg2_next <= s_reg2(55 downto 0) & input;
-                     elsif shift_count = "011" then
+                     elsif shift_count = "010" then
                         count_next <= count + 1;
                         shift_count_next <= shift_count + 1;
                         s_reg3_next <= s_reg3(55 downto 0) & input;
-                     elsif shift_count = "100" then
+                     elsif shift_count = "110" then
                         count_next <= count + 1;
-                        shift_count_next <= "001";
+                        shift_count_next <= "000";
                         s_reg4_next <= s_reg4(55 downto 0) & input;
                      else
                         count_next <= count;

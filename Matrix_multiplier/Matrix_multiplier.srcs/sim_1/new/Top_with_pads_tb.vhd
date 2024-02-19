@@ -1,3 +1,5 @@
+
+
 ----------------------------------------------------------------------------------
 -- Company: 
 -- Engineer: 
@@ -35,16 +37,16 @@ use STD.textio.all;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Top_tb is
+entity Top_with_pads_tb is
 
-end Top_tb;
+end Top_with_pads_tb;
 
-architecture Behavioral of Top_tb is
+architecture Behavioral of TOP_with_pads_tb is
 
 --signal
 file input_file : text;
 file output_file : text;
-constant period : time := 10ns;
+constant period : time := 10 ns;
 signal clk : std_logic := '0';
 signal reset : std_logic := '1';
 signal input : std_logic_vector (7 downto 0) := "00000000";
@@ -58,15 +60,14 @@ signal count, count_next : std_logic_vector (5 downto 0);
 type state_type is (state_idle, state_read, state_wait);
 signal state_reg, state_next : state_type;
 --Component
-    component TOP is
-     port ( clk : in STD_LOGIC;
-           reset : in STD_LOGIC;
-           ready : in STD_LOGIC;
-           input : in STD_LOGIC_VECTOR (7 downto 0);
-           RAM_out : out STD_LOGIC_VECTOR (8 downto 0);
-           write_done : inout std_logic;
-     --      ready_to_start : inout STD_LOGIC;
-           fini : inout STD_LOGIC
+    component TOP_with_pads is
+     port ( clk_in : in STD_LOGIC;
+           reset_in : in STD_LOGIC;
+           ready_in : in STD_LOGIC;
+           input_in : in STD_LOGIC_VECTOR (7 downto 0);
+           RAM_out_out : out STD_LOGIC_VECTOR (8 downto 0);
+           write_done_out : out std_logic;
+           fini_out : out STD_LOGIC
            );
            
            end component;
@@ -75,15 +76,14 @@ begin
     reset <= '0'after period * 10;
 
     
-    DUT : TOP port map (
-        clk => clk,
-        reset => reset,
-        input => input,
-        ready => ready,
-        RAM_out => RAM_out,
-  --      ready_to_start => ready_to_start,
-        write_done  => write_done,
-        fini => fini
+    DUT : TOP_with_pads port map (
+        clk_in => clk,
+        reset_in => reset,
+        input_in => input,
+        ready_in => ready,
+        RAM_out_out => RAM_out,
+        write_done_out  => write_done,
+        fini_out => fini
            
     );
     
