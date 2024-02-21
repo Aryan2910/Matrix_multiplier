@@ -111,7 +111,7 @@ end process;
 
 
 combinational: process (mul_en,state_reg, state_next, count_mul, s_reg1, s_reg2, s_reg3, s_reg4, sig_sreg1, 
-sig_sreg2, sig_sreg3, sig_sreg4,count_col, mu1, mu2, mu3, mu4, dataROM, coeff  ) 
+sig_sreg2, sig_sreg3, sig_sreg4,count_col, mu1, mu2, mu3, mu4, dataROM, coeff, address, count_coeff, s_MU_out, mu1_next, mu2_next, mu3_next, mu4_next) 
 begin
 mu1_next <= mu1;
 mu2_next <= mu2;

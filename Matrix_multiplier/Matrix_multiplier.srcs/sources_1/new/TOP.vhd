@@ -40,7 +40,6 @@ entity TOP is
         input : in std_logic_vector (7 downto 0);
         RAM_out : out std_logic_vector (8 downto 0);
         write_done : out std_logic;
-     --   ready_to_start : inout std_logic;
         fini : out std_logic
         );
         
@@ -65,10 +64,10 @@ component Controller
            read_ram : out std_logic; -- output that triggers the RAM
            
            -- outputs
-           s_reg1_out : out std_logic_vector (63 downto 0) := (others => '0');
-           s_reg2_out : out std_logic_vector (63 downto 0) := (others => '0');
-           s_reg3_out : out std_logic_vector (63 downto 0) := (others => '0');
-           s_reg4_out : out std_logic_vector (63 downto 0) := (others => '0')
+           s_reg1_out : out std_logic_vector (63 downto 0);
+           s_reg2_out : out std_logic_vector (63 downto 0);
+           s_reg3_out : out std_logic_vector (63 downto 0);
+           s_reg4_out : out std_logic_vector (63 downto 0)
            );
            
 end component;
@@ -173,7 +172,6 @@ write_done <= s_write_done;
            write_done => s_write_done,
            --Outputs
            RAM_out => RAM_out,
-       --    ready_to_start => ready_to_start,
            fini => fini
            
     );

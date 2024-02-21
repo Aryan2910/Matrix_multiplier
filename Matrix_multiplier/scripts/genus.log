@@ -1,0 +1,49 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2016 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+Version: 16.12-s027_1, built Wed Oct 05 2016
+Options: -legacy_ui 
+Date:    Tue Feb 20 16:17:53 2024
+Host:    ylva.fransg.eit.lth.se (x86_64 w/Linux 3.10.0-1160.102.1.el7.x86_64) (6cores*6cpus*Intel(R) Core(TM) i5-8500 CPU @ 3.00GHz 9216KB) (16222652KB)
+OS:      CentOS Linux release 7.9.2009 (Core)
+
+Checking out license: Genus_Synthesis
+
+Loading tool scripts...
+Finished loading tool scripts (6 seconds elapsed).
+
+WARNING: This version of the tool is 2694 days old.
+legacy_genus:/> soruce synt.tcl
+invalid command name "soruce"
+legacy_genus:/> source synt.tcl
+Sourcing './synt.tcl' (Tue Feb 20 16:18:24 +0100 2024)...
+
+
+
+ DESIGN FILES 
+
+
+
+File './/scripts/design_setup.tcl' does not exist.
+legacy_genus:/> source synt.tcl
+Sourcing './synt.tcl' (Tue Feb 20 16:19:04 +0100 2024)...
+
+
+
+ DESIGN FILES 
+
+
+
+File './/scripts/design_setup.tcl' does not exist.
+legacy_genus:/> source synt.tcl
+Sourcing './synt.tcl' (Tue Feb 20 16:19:36 +0100 2024)...
+
+
+
+ DESIGN FILES 
+
+
+
+File './/scripts/design_setup.tcl' does not exist.

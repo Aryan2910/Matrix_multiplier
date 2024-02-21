@@ -99,19 +99,19 @@ ready_pad : CPAD_S_74x50u_IN
         PADIO => ready_in
         );
 
-fini_pad : CPAD_S_74x50u_OUT 
-    port map(
-        COREIO => fini_sig,
-        PADIO => fini_out
-        );
-
 InPads : for i in 0 to 7 generate
-InPad : CPAD_S_74x50u_IN
+InPads : CPAD_S_74x50u_IN
   port map( 
         COREIO => input_sig(i),
         PADIO => input_in(i)
         );
 end generate InPads;
+
+fini_pad : CPAD_S_74x50u_OUT 
+    port map(
+        COREIO => fini_sig,
+        PADIO => fini_out
+        );
 
 write_done_pad : CPAD_S_74x50u_OUT 
     port map(
@@ -120,7 +120,7 @@ write_done_pad : CPAD_S_74x50u_OUT
         );
 
 RAM_OutPads : for i in 0 to 8 generate
-OutPad : CPAD_S_74x50u_OUT
+RAM_OutPads : CPAD_S_74x50u_OUT
   port map( 
         COREIO => RAM_out_sig(i),
         PADIO => RAM_out_out(i)
@@ -131,13 +131,13 @@ TOP_module : TOP
 
     port map(  
             
-            clk     => clk_sig,
-            reset     => reset_sig,
-            input   => input_sig,
-            ready => ready_sig,
-            write_done => write_done_sig,
-            fini  => fini_sig,
-            RAM_out => RAM_out_sig
+            clk     	=> clk_sig,
+            reset    	=> reset_sig,
+            input   	=> input_sig,
+            ready 	=> ready_sig,
+            write_done 	=> write_done_sig,
+            fini  	=> fini_sig,
+            RAM_out 	=> RAM_out_sig
          );
 
 

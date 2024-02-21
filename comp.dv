@@ -1,0 +1,31 @@
+#
+# Compile the stuff for the Median Filter.
+#
+# Use: source <file>
+#
+
+analyze -library WORK -format vhdl ./vhdl/ff.vhd
+analyze -library WORK -format vhdl ./vhdl/mux2.vhd
+analyze -library WORK -format vhdl ./vhdl/sub.vhd
+analyze -library WORK -format vhdl ./vhdl/median_logic.vhd
+analyze -library WORK -format vhdl ./vhdl/medianfilter_P.vhd
+
+elaborate MEDIANFILTER -architecture STRUCTURAL \
+  -library DEFAULT -parameters "N = 8"
+
+# Make sure the compiler does not exchange pads.
+set_dont_touch [ get_cells *Pad*] true
+set_dont_touch clkpad true
+
+# Fix the clock (ns).
+create_clock -period 20 -name myclk clk
+set_clock_uncertainty 1 myclk
+
+# Do the real synthesis.
+compile -map_effort medium -area_effort medium
+
+# Save the stuff
+write -hierarchy -format ddc -output ./netlists/medfilt.ddc
+write -hierarchy -format verilog -output ./netlists/medfilt.v
+write -hierarchy -format vhdl -output ./netlists/medfilt.vhdl
+

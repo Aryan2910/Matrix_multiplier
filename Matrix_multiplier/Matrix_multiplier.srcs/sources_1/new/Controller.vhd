@@ -40,10 +40,10 @@ entity Controller is
            read_ram : out std_logic; -- output that triggers the RAM
            
            -- outputs
-           s_reg1_out : out std_logic_vector (63 downto 0) := (others => '0');
-           s_reg2_out : out std_logic_vector (63 downto 0) := (others => '0');
-           s_reg3_out : out std_logic_vector (63 downto 0) := (others => '0');
-           s_reg4_out : out std_logic_vector (63 downto 0) := (others => '0');
+           s_reg1_out : out std_logic_vector (63 downto 0);
+           s_reg2_out : out std_logic_vector (63 downto 0);
+           s_reg3_out : out std_logic_vector (63 downto 0);
+           s_reg4_out : out std_logic_vector (63 downto 0);
            read_tb : out std_logic            --TO TOP
            );
            
@@ -145,7 +145,7 @@ begin
                         count_next <= count + 1;
                         shift_count_next <= shift_count + 1;
                         s_reg3_next <= s_reg3(55 downto 0) & input;
-                     elsif shift_count = "110" then
+                     elsif shift_count = "011" then
                         count_next <= count + 1;
                         shift_count_next <= "000";
                         s_reg4_next <= s_reg4(55 downto 0) & input;

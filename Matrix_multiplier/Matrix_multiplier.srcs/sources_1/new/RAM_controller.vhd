@@ -47,10 +47,9 @@ signal mu_next : std_logic_vector (8 downto 0);
 --One bit signals
 signal write_enable : std_logic;
 signal RY : std_logic;
-signal S_HIGH: std_logic_vector(17 downto 0);
 signal fini_prev, fini_next: std_logic;
 --signal ready_prev, ready_next: std_logic;
-signal escape_clear : std_logic := '0';
+signal escape_clear, escape_clear_next : std_logic;
 --Constant
 constant LOW: std_logic := '0';
 
@@ -95,6 +94,7 @@ sequential: process (clk, reset) begin
                 distribute_count <= (others => '0');
                 write_count <= (others => '0');
                 fini_prev <= '0';
+		escape_clear <= '0'; 
                -- ready_prev <= '0';
             else 
                 address_write_count <= address_write_count_next;
@@ -107,11 +107,12 @@ sequential: process (clk, reset) begin
                 fini_prev <= fini_next;
               --  ready_prev <= ready_next;
                 write_count <= write_count_next;
+		escape_clear <= escape_clear_next;
             end if;
         end if;
 end process;
     
-behavior: process (state_reg, state_next, write_enable, read_count, read_ram, address_read_count,  address_write_count, RY,MU_in, s_mu_in, distribute_count, write_count, fini_next ,fini_prev, escape_clear) begin --, MU_1_in, MU_2_in, MU_3_in, MU_4_in
+behavior: process (state_reg, state_next, write_enable, read_count, read_ram, address_read_count,  address_write_count, RY,MU_in, s_mu_in, distribute_count, write_count, fini_next ,fini_prev, escape_clear, data_out, mu) begin --, MU_1_in, MU_2_in, MU_3_in, MU_4_in
 --Default 
 address_write_count_next <= address_write_count;
 address_read_count_next <= address_read_count;
@@ -124,6 +125,7 @@ s_mu_in_next <= s_mu_in;
 distribute_count_next <= distribute_count;
 write_count_next <= write_count;
 fini_next  <= fini_prev;
+escape_clear_next <= escape_clear;
 --ready_next  <= ready_prev;
 --For output
 mu_next <= mu;
@@ -155,7 +157,7 @@ fini <= '0';
                     
                     address_write_count_next <= (others => '0');
                     state_next <= s_write;
-                    escape_clear <= '1';
+                    escape_clear_next <= '1';
                   else
                    state_next <= s_clear;
                    end if; 
@@ -180,8 +182,7 @@ fini <= '0';
                             write_done <= '0';
                             state_next <= s_shift_input;
                             write_enable <= '0';                   --should we add wr_en = 0 in both the states?
-                            data_in <= "00000000000000" & s_mu_in (287 downto 270);
-                            S_HIGH <= s_mu_in(287 downto 270);
+                            data_in <= "00000000000000" & s_mu_in (287 downto 270);                 
                             address_write_count_next <= address_write_count + 1;
                             write_count_next <= write_count + 1;
                         end if;
