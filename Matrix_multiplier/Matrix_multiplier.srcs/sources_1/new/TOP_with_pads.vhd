@@ -129,8 +129,7 @@ end generate RAM_OutPads;
 
 TOP_module : TOP
 
-    port map(  
-            
+    port map(              
             clk     	=> clk_sig,
             reset    	=> reset_sig,
             input   	=> input_sig,

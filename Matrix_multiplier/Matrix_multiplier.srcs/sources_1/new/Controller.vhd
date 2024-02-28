@@ -101,7 +101,7 @@ end process;
 
 
   
-Shifting: process(shift_count,state_reg,s_reg1,s_reg2,s_reg3,s_reg4,count, load, write_done)
+Shifting: process(shift_count,state_reg,s_reg1,s_reg2,s_reg3,s_reg4,count, load, write_done, input, ready)
 begin
             --stating initial conditions(to aavoid latches)
             state_next <= state_reg;
