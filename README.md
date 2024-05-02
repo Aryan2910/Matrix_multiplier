@@ -30,12 +30,12 @@ in a RAM
 ## ASMD
 The ASMD describes describes both the behaviour of registers oprations and control units.
 
-![ASMD](link)
+![ASMD](https://github.com/Aryan2910/Matrix_multiplier/blob/3915839c2bcf52e03ff5bb1584a53a58dd7ccb74/Diagrams_documents/ASMD.png)
 
 ## Block diagram
 In the block diagram we have explained the interconnections and the modules used for the matrix multiplication.
 
-![Block_Diagram](link)
+![Block_Diagram](https://github.com/Aryan2910/Matrix_multiplier/blob/3915839c2bcf52e03ff5bb1584a53a58dd7ccb74/Diagrams_documents/Block%20diagram.jpeg)
 
 ## Repository
 The following folders contains:
